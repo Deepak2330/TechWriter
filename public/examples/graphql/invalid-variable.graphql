@@ -1,0 +1,1 @@
+query InvalidVariable($first: Int!) { products(first: $first) { totalCount } }

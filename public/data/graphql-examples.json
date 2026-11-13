@@ -1,0 +1,408 @@
+[
+  {
+    "id": "get-product",
+    "title": "Get a product",
+    "kind": "query",
+    "role": "anonymous",
+    "description": "Display a product name, current price, original price, and availability.",
+    "query": "query GetProduct($id: ID!) {\n  product(id: $id) {\n    id\n    name\n    price { amountMinor currency }\n    priceBeforeMarkdown { amountMinor currency }\n    availability\n  }\n}",
+    "variables": {
+      "id": "prod_1001"
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "Returns the selected seeded product fields. Unknown IDs cause a field error and product: null. The JSON below is the expected seed result, not a substituted live response.",
+    "writing": "Explain opaque IDs, nullable original price, INR minor units, and availability. The response mirrors the selection, not the entire Product type.",
+    "mode": "Live",
+    "response": {
+      "data": {
+        "product": {
+          "id": "prod_1001",
+          "name": "Wireless Headphones",
+          "price": {
+            "amountMinor": 249900,
+            "currency": "INR"
+          },
+          "priceBeforeMarkdown": {
+            "amountMinor": 299900,
+            "currency": "INR"
+          },
+          "availability": "IN_STOCK"
+        }
+      }
+    }
+  },
+  {
+    "id": "browse-products",
+    "title": "Browse products with cursors",
+    "kind": "query",
+    "role": "anonymous",
+    "description": "Retrieve a bounded catalogue page and continuation metadata.",
+    "query": "query BrowseProducts($first: Int!, $after: String) {\n  products(first: $first, after: $after, sort: PRICE_ASC) {\n    edges { cursor node { id name price { amountMinor currency } } }\n    pageInfo { hasNextPage endCursor }\n    totalCount\n  }\n}",
+    "variables": {
+      "first": 2
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "The first two seed products by ascending price are Desk Lamp and Canvas Backpack. totalCount is 3. Pass the returned endCursor unchanged as after to continue.",
+    "writing": "first accepts 1-100. Keep filters and sorting unchanged. Cursors are opaque, scope-bound, offset-backed, and not durable snapshots.",
+    "mode": "Live"
+  },
+  {
+    "id": "list-categories",
+    "title": "List product categories",
+    "kind": "query",
+    "role": "anonymous",
+    "description": "Find category IDs accepted by product creation and filtering.",
+    "query": "query Categories { categories { id name } }",
+    "variables": {},
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "Returns cat_audio, cat_home, and cat_accessories after reset.",
+    "writing": "Explain the relationship between category IDs and product inputs; do not confuse display names with IDs.",
+    "mode": "Live"
+  },
+  {
+    "id": "get-cart",
+    "title": "Read a cart",
+    "kind": "query",
+    "role": "customer",
+    "description": "Inspect items, current product information, and the cart total.",
+    "query": "query ReadCart($id: ID!) {\n  cart(id: $id) {\n    id status customerId\n    items { id productId quantity unitPrice { amountMinor currency } product { name } }\n    total { amountMinor currency }\n  }\n}",
+    "variables": {
+      "id": "cart_1001"
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "The seed cart is ACTIVE and empty, with total 0 INR minor units. After adding items, their data and total appear.",
+    "writing": "Owner/admin access is required. Explain empty items, quantity rules, current pricing while active, and the checked-out snapshot.",
+    "mode": "Live"
+  },
+  {
+    "id": "get-order",
+    "title": "Read an order and shipments",
+    "kind": "query",
+    "role": "customer",
+    "description": "Retrieve an order snapshot and any recorded shipment.",
+    "query": "query ReadOrder($id: ID!) {\n  order(id: $id) {\n    id status createdAt\n    items { productId name quantity unitPrice { amountMinor currency } }\n    total { amountMinor currency }\n    shipments { id status trackingCode }\n  }\n}",
+    "variables": {
+      "id": "ord_1001"
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "The seed order is DELIVERED and has one synthetic shipment. New orders are CONFIRMED and have no shipments.",
+    "writing": "Explain order ownership, immutable line snapshots, canonical UTC DateTime, and the distinction between order confirmation and real fulfillment.",
+    "mode": "Live"
+  },
+  {
+    "id": "list-orders",
+    "title": "List the caller's orders",
+    "kind": "query",
+    "role": "customer",
+    "description": "Page through private order records.",
+    "query": "query MyOrders($first: Int!, $after: String) {\n  orders(first: $first, after: $after) {\n    edges { cursor node { id status total { amountMinor currency } } }\n    pageInfo { hasNextPage endCursor }\n    totalCount\n  }\n}",
+    "variables": {
+      "first": 20
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "The customer sees their orders; an administrator sees all orders. The seed customer has one order.",
+    "writing": "Document role-specific visibility and caller-bound cursor scope. A total count is not necessarily a global business count.",
+    "mode": "Live"
+  },
+  {
+    "id": "my-profile",
+    "title": "Read the customer profile",
+    "kind": "query",
+    "role": "customer",
+    "description": "Retrieve the current synthetic customer's profile.",
+    "query": "query MyProfile { me { id name email } }",
+    "variables": {},
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "Returns cust_1001 with the customer token. Seller and administrator roles are not customer profiles.",
+    "writing": "State customer-only access and distinguish this identity lookup from permission to access another customer's resources.",
+    "mode": "Live"
+  },
+  {
+    "id": "create-product",
+    "title": "Create a product",
+    "kind": "mutation",
+    "role": "seller",
+    "description": "Add a catalogue product with a unique SKU.",
+    "query": "mutation CreateProduct($input: CreateProductInput!) {\n  createProduct(input: $input) {\n    product { id name sku price { amountMinor currency } availability categoryId sellerId }\n  }\n}",
+    "variables": {
+      "input": {
+        "name": "Travel Mug",
+        "description": "Reusable mug for the learning catalogue.",
+        "sku": "TM-TEAL-01",
+        "price": {
+          "amountMinor": 79900,
+          "currency": "INR"
+        },
+        "availability": "IN_STOCK",
+        "categoryId": "cat_home"
+      }
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies. Reset before repeating this exact SKU.",
+    "expected": "Creates a new product owned by the seller. Reusing the SKU conflicts. Retain the returned product ID.",
+    "writing": "Describe required input fields, product name/SKU limits, supported currency, integer unit-price bounds, ownership, and optional original price.",
+    "mode": "Live"
+  },
+  {
+    "id": "update-product",
+    "title": "Update a product",
+    "kind": "mutation",
+    "role": "seller",
+    "description": "Change supplied catalogue fields without replacing omitted values.",
+    "query": "mutation UpdateProduct($id: ID!, $input: UpdateProductInput!) {\n  updateProduct(id: $id, input: $input) {\n    product { id name priceBeforeMarkdown { amountMinor currency } }\n  }\n}",
+    "variables": {
+      "id": "prod_1001",
+      "input": {
+        "name": "Travel Headphones",
+        "priceBeforeMarkdown": null
+      }
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "Changes the name and clears the original price. Other values are preserved.",
+    "writing": "Omission preserves a value. Null clears only priceBeforeMarkdown; other null inputs fail business validation. Empty updates are invalid. Requires owning seller/admin.",
+    "mode": "Live"
+  },
+  {
+    "id": "delete-product",
+    "title": "Delete a product",
+    "kind": "mutation",
+    "role": "seller",
+    "description": "Remove a catalogue product when no active cart references it.",
+    "query": "mutation DeleteProduct($id: ID!) { deleteProduct(id: $id) { deletedId } }",
+    "variables": {
+      "id": "prod_1002"
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "Deletes the seed lamp when not in an active cart. Repeating the deletion produces NOT_FOUND.",
+    "writing": "Explain permission, active-cart dependency conflicts, historical order snapshots, and destructive/reset behavior.",
+    "mode": "Live"
+  },
+  {
+    "id": "create-cart",
+    "title": "Create an empty cart",
+    "kind": "mutation",
+    "role": "customer",
+    "description": "Start a new purchase intent with a customer-owned cart.",
+    "query": "mutation StartCart { createCart { cart { id status items { id } total { amountMinor currency } } } }",
+    "variables": {},
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "Returns a new ACTIVE empty cart. Save the returned ID for later operations.",
+    "writing": "Each successful call creates a distinct cart. Do not hard-code a generated sequence value or claim this mutation is inherently idempotent.",
+    "mode": "Live"
+  },
+  {
+    "id": "add-cart-item",
+    "title": "Add a cart item",
+    "kind": "mutation",
+    "role": "customer",
+    "description": "Add one available product not already present in an ACTIVE cart.",
+    "query": "mutation AddItem($input: AddCartItemInput!) {\n  addCartItem(input: $input) {\n    cart { id status items { id productId quantity } total { amountMinor currency } }\n  }\n}",
+    "variables": {
+      "input": {
+        "cartId": "cart_1001",
+        "productId": "prod_1001",
+        "quantity": 1
+      }
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies. The seed cart must be empty.",
+    "expected": "Adds the headphones and returns the updated cart. Save the returned item ID; a repeated add conflicts.",
+    "writing": "Quantity is 1-99; maximum ten distinct products. Owner/admin access, availability, cart state, and duplicate behavior are business rules beyond SDL.",
+    "mode": "Live"
+  },
+  {
+    "id": "update-cart-item",
+    "title": "Replace a cart-item quantity",
+    "kind": "mutation",
+    "role": "customer",
+    "description": "Set an existing item's quantity to a new value.",
+    "query": "mutation UpdateItem($input: UpdateCartItemInput!) {\n  updateCartItem(input: $input) {\n    cart { id items { id productId quantity } total { amountMinor currency } }\n  }\n}",
+    "variables": {
+      "input": {
+        "cartId": "cart_1001",
+        "itemId": "item_1001",
+        "quantity": 2
+      }
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies. First run Add a cart item once after reset; use its returned item ID.",
+    "expected": "Replaces quantity with 2, not an increment by 2. A closed cart cannot be edited.",
+    "writing": "Explain the identifier handoff, replacement semantics, quantity bounds, ownership, and use of removeCartItem rather than zero.",
+    "mode": "Live"
+  },
+  {
+    "id": "remove-cart-item",
+    "title": "Remove a cart item",
+    "kind": "mutation",
+    "role": "customer",
+    "description": "Delete an item from an ACTIVE cart.",
+    "query": "mutation RemoveItem($cartId: ID!, $itemId: ID!) {\n  removeCartItem(cartId: $cartId, itemId: $itemId) {\n    cart { id items { id productId quantity } total { amountMinor currency } }\n  }\n}",
+    "variables": {
+      "cartId": "cart_1001",
+      "itemId": "item_1001"
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies. First add a product and use its returned item ID.",
+    "expected": "Returns the updated cart after removal. Repeating with a missing item produces NOT_FOUND.",
+    "writing": "Distinguish item ID from product ID. Describe ownership, ACTIVE-state requirement, and empty-cart total behavior.",
+    "mode": "Live"
+  },
+  {
+    "id": "create-order",
+    "title": "Place an order safely",
+    "kind": "mutation",
+    "role": "customer",
+    "description": "Snapshot a nonempty cart and retain an idempotent order result.",
+    "query": "mutation PlaceOrder($input: CreateOrderInput!) {\n  createOrder(input: $input) {\n    order { id status total { amountMinor currency } items { productId name quantity } }\n    replayed\n  }\n}",
+    "variables": {
+      "input": {
+        "cartId": "cart_1001",
+        "shippingAddress": {
+          "line1": "10 Example Road",
+          "city": "Bengaluru",
+          "postalCode": "560001",
+          "country": "IN"
+        },
+        "idempotencyKey": "graphql-order-001"
+      }
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies. First add prod_1001 to cart_1001. Preserve this key and the exact details for retries.",
+    "expected": "Creates a CONFIRMED order and closes the cart. Identical replay returns the saved order with replayed true. Changed details with the same key conflict.",
+    "writing": "Document customer-only access, cart state, stock recheck, immutable prices, key scope and retention, and the absence of payments or inventory reservation.",
+    "mode": "Live"
+  },
+  {
+    "id": "cancel-order",
+    "title": "Cancel a confirmed order",
+    "kind": "mutation",
+    "role": "customer",
+    "description": "Move a CONFIRMED order to CANCELLED.",
+    "query": "mutation CancelOrder($id: ID!, $reason: String) {\n  cancelOrder(id: $id, reason: $reason) { order { id status } }\n}",
+    "variables": {
+      "id": "ord_1002",
+      "reason": "Changed my mind."
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies. First add a cart item and place an order; replace id with the returned order ID. The seed delivered order cannot be cancelled.",
+    "expected": "Cancels a confirmed order. An already-cancelled order returns unchanged; a delivered order produces an ORDER_STATE conflict.",
+    "writing": "Explain order ownership, accepted states, repeated cancellation, optional reason, and no automatic refund behavior.",
+    "mode": "Live"
+  },
+  {
+    "id": "add-review",
+    "title": "Submit a product review",
+    "kind": "mutation",
+    "role": "customer",
+    "description": "Create one review per customer and product.",
+    "query": "mutation Review($input: AddReviewInput!) {\n  addReview(input: $input) { review { id productId rating comment createdAt } }\n}",
+    "variables": {
+      "input": {
+        "productId": "prod_1002",
+        "rating": 5,
+        "comment": "Useful for my reading desk."
+      }
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "Adds a review for the lamp. A second review by the same customer for that product conflicts.",
+    "writing": "Rating is integer 1-5; comment is 1-2000 characters. The demo does not enforce a verified-purchase policy.",
+    "mode": "Live"
+  },
+  {
+    "id": "create-return",
+    "title": "Request a whole-order return",
+    "kind": "mutation",
+    "role": "customer",
+    "description": "Record a return request for a DELIVERED order.",
+    "query": "mutation ReturnOrder($input: CreateReturnInput!) {\n  createReturn(input: $input) { returnRequest { id orderId reason status createdAt } }\n}",
+    "variables": {
+      "input": {
+        "orderId": "ord_1001",
+        "reason": "The item is not suitable."
+      }
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "Creates a REQUESTED return. Only one return per order is allowed.",
+    "writing": "Owner/admin access, delivered-state precondition, reason1-500, and no automatic refund or return-shipping action.",
+    "mode": "Live"
+  },
+  {
+    "id": "partial-data",
+    "title": "Intentional error: public and private fields",
+    "kind": "query",
+    "role": "anonymous",
+    "description": "Observe usable product data alongside an authorization error.",
+    "query": "query PublicAndPrivate {\n  product(id: \"prod_1001\") { id name }\n  me { id name }\n}",
+    "variables": {},
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies. Do not select a token for this example.",
+    "expected": "product resolves; me is null with an error path of [\"me\"]. Inspect actual transport status independently.",
+    "writing": "Explain partial data, nullable boundaries, local error extensions, and authentication recovery.",
+    "mode": "Intentional error"
+  },
+  {
+    "id": "invalid-field",
+    "title": "Intentional error: unknown field",
+    "kind": "query",
+    "role": "anonymous",
+    "description": "Demonstrate document validation before business execution.",
+    "query": "query InvalidField { product(id: \"prod_1001\") { id colour } }",
+    "variables": {},
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "The document is rejected because Product has no colour field.",
+    "writing": "Correct the selection using the live SDL; changing the product ID does not fix a schema validation error.",
+    "mode": "Intentional error"
+  },
+  {
+    "id": "invalid-variable",
+    "title": "Intentional error: variable type",
+    "kind": "query",
+    "role": "anonymous",
+    "description": "Supply a string where the operation requires an integer.",
+    "query": "query InvalidVariable($first: Int!) { products(first: $first) { totalCount } }",
+    "variables": {
+      "first": "two"
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "Variable coercion fails; the catalogue resolver does not interpret the word two as a number.",
+    "writing": "Distinguish JSON validity, variable type compatibility, and later business-range validation.",
+    "mode": "Intentional error"
+  },
+  {
+    "id": "wrong-owner",
+    "title": "Intentional error: cart ownership",
+    "kind": "query",
+    "role": "other-customer",
+    "description": "Test authorization with a valid identity that does not own the cart.",
+    "query": "query OtherCart { cart(id: \"cart_1001\") { id customerId } }",
+    "variables": {},
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "The other customer is authenticated but forbidden; cart is null with a business error.",
+    "writing": "A token identifies an actor; it does not grant access to every resource.",
+    "mode": "Intentional error"
+  },
+  {
+    "id": "conditional-fields",
+    "title": "Conditionally include original price",
+    "kind": "query",
+    "role": "anonymous",
+    "description": "Use a Boolean directive to change the selected response shape.",
+    "query": "query ProductCard($showOriginal: Boolean!) {\n  product(id: \"prod_1001\") {\n    name\n    price { amountMinor currency }\n    priceBeforeMarkdown @include(if: $showOriginal) { amountMinor currency }\n  }\n}",
+    "variables": {
+      "showOriginal": false
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "With false, priceBeforeMarkdown is absent from the selected response, not present with null.",
+    "writing": "Explain the distinction between excluded fields and selected nullable fields.",
+    "mode": "Live"
+  },
+  {
+    "id": "compare-products",
+    "title": "Compare products using aliases",
+    "kind": "query",
+    "role": "anonymous",
+    "description": "Retrieve two products under distinct response names.",
+    "query": "query Compare($first: ID!, $second: ID!) {\n  first: product(id: $first) { id name price { amountMinor currency } }\n  second: product(id: $second) { id name price { amountMinor currency } }\n}",
+    "variables": {
+      "first": "prod_1001",
+      "second": "prod_1002"
+    },
+    "prerequisites": "Reset the local demo for the documented seed values. Start the Node server after installing the GraphQL dependencies.",
+    "expected": "data.first and data.second contain their selected products.",
+    "writing": "Aliases change response keys and error paths without renaming the schema field.",
+    "mode": "Live"
+  }
+]

@@ -1,0 +1,7 @@
+query ProductCard($showOriginal: Boolean!) {
+  product(id: "prod_1001") {
+    name
+    price { amountMinor currency }
+    priceBeforeMarkdown @include(if: $showOriginal) { amountMinor currency }
+  }
+}

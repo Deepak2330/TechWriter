@@ -1,0 +1,4 @@
+query PublicAndPrivate {
+  product(id: "prod_1001") { id name }
+  me { id name }
+}

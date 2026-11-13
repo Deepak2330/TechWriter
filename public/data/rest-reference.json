@@ -1,0 +1,1467 @@
+[
+  {
+    "id": "listProducts",
+    "method": "GET",
+    "path": "/products",
+    "summary": "Search the product catalogue",
+    "access": "Public",
+    "description": "Filter by name, category, or availability. Results default to NAME_ASC and use offset pagination.",
+    "input": null,
+    "response": "ProductPage",
+    "parameters": [
+      {
+        "name": "limit",
+        "in": "query",
+        "description": "Maximum items in this page.",
+        "schema": {
+          "type": "integer",
+          "default": 20,
+          "minimum": 1,
+          "maximum": 100
+        }
+      },
+      {
+        "name": "offset",
+        "in": "query",
+        "description": "Zero-based position to begin reading.",
+        "schema": {
+          "type": "integer",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 1000000
+        }
+      },
+      {
+        "name": "q",
+        "description": "Case-insensitive name substring.",
+        "schema": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "in": "query"
+      },
+      {
+        "name": "categoryId",
+        "description": "Exact category identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "in": "query"
+      },
+      {
+        "name": "availability",
+        "description": "Exact availability value.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "IN_STOCK",
+            "OUT_OF_STOCK"
+          ]
+        },
+        "in": "query"
+      },
+      {
+        "name": "sort",
+        "description": "Stable sort with ID tie-breaker.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "NAME_ASC",
+            "PRICE_ASC",
+            "PRICE_DESC"
+          ],
+          "default": "NAME_ASC"
+        },
+        "in": "query"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": null,
+    "responseExample": {
+      "items": [
+        {
+          "id": "prod_1003",
+          "name": "Canvas Backpack",
+          "description": "A lightweight everyday backpack.",
+          "sku": "CB-GRY-01",
+          "price": {
+            "amountMinor": 189900,
+            "currency": "INR"
+          },
+          "priceBeforeMarkdown": null,
+          "availability": "OUT_OF_STOCK",
+          "categoryId": "cat_accessories",
+          "sellerId": "seller_1002",
+          "createdAt": "2026-01-15T09:00:00.000Z"
+        },
+        {
+          "id": "prod_1002",
+          "name": "Desk Lamp",
+          "description": "Adjustable reading lamp with a warm white light.",
+          "sku": "DL-WHT-01",
+          "price": {
+            "amountMinor": 129900,
+            "currency": "INR"
+          },
+          "priceBeforeMarkdown": null,
+          "availability": "IN_STOCK",
+          "categoryId": "cat_home",
+          "sellerId": "seller_1001",
+          "createdAt": "2026-01-15T09:00:00.000Z"
+        },
+        {
+          "id": "prod_1001",
+          "name": "Wireless Headphones",
+          "description": "Over-ear wireless headphones with a travel case.",
+          "sku": "WH-BLK-01",
+          "price": {
+            "amountMinor": 249900,
+            "currency": "INR"
+          },
+          "priceBeforeMarkdown": {
+            "amountMinor": 299900,
+            "currency": "INR"
+          },
+          "availability": "IN_STOCK",
+          "categoryId": "cat_audio",
+          "sellerId": "seller_1001",
+          "createdAt": "2026-01-15T09:00:00.000Z"
+        }
+      ],
+      "total": 3,
+      "limit": 20,
+      "offset": 0
+    },
+    "status": 200,
+    "examplePath": "/products",
+    "tag": "Products",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "getProduct",
+    "method": "GET",
+    "path": "/products/{productId}",
+    "summary": "Retrieve a product",
+    "access": "Public",
+    "description": "Retrieve current pricing and availability. A matching If-None-Match value returns 304 without a body.",
+    "input": null,
+    "response": "Product",
+    "parameters": [
+      {
+        "name": "productId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque productId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "prod_1001"
+      },
+      {
+        "name": "If-None-Match",
+        "in": "header",
+        "description": "Previously received ETag. A match returns 304 without a body.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": null,
+    "responseExample": {
+      "id": "prod_1001",
+      "name": "Wireless Headphones",
+      "description": "Over-ear wireless headphones with a travel case.",
+      "sku": "WH-BLK-01",
+      "price": {
+        "amountMinor": 249900,
+        "currency": "INR"
+      },
+      "priceBeforeMarkdown": {
+        "amountMinor": 299900,
+        "currency": "INR"
+      },
+      "availability": "IN_STOCK",
+      "categoryId": "cat_audio",
+      "sellerId": "seller_1001",
+      "createdAt": "2026-01-15T09:00:00.000Z"
+    },
+    "status": 200,
+    "examplePath": "/products/prod_1001",
+    "tag": "Products",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "createProduct",
+    "method": "POST",
+    "path": "/products",
+    "summary": "Create a product",
+    "access": "Seller",
+    "description": "Create a product owned by the seller. Administrators create products for seller_1001. SKUs must be unique.",
+    "input": "ProductInput",
+    "response": "Product",
+    "parameters": [
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": {
+      "name": "USB-C Cable",
+      "description": "A two metre charging cable.",
+      "sku": "USB-C-02",
+      "price": {
+        "amountMinor": 49900,
+        "currency": "INR"
+      },
+      "priceBeforeMarkdown": null,
+      "availability": "IN_STOCK",
+      "categoryId": "cat_accessories"
+    },
+    "responseExample": {
+      "description": "A two metre charging cable.",
+      "priceBeforeMarkdown": null,
+      "name": "USB-C Cable",
+      "sku": "USB-C-02",
+      "price": {
+        "amountMinor": 49900,
+        "currency": "INR"
+      },
+      "availability": "IN_STOCK",
+      "categoryId": "cat_accessories",
+      "id": "prod_1004",
+      "sellerId": "seller_1001",
+      "createdAt": "2026-11-13T08:38:49.259Z"
+    },
+    "status": 201,
+    "examplePath": "/products",
+    "tag": "Products",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "replaceProduct",
+    "method": "PUT",
+    "path": "/products/{productId}",
+    "summary": "Replace product details",
+    "access": "Seller",
+    "description": "Replace all writable details. Omitted description becomes an empty string; omitted priceBeforeMarkdown becomes null. Identity, owner, and creation time do not change.",
+    "input": "ProductInput",
+    "response": "Product",
+    "parameters": [
+      {
+        "name": "productId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque productId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "prod_1001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": {
+      "name": "USB-C Cable",
+      "description": "A two metre charging cable.",
+      "sku": "USB-C-02",
+      "price": {
+        "amountMinor": 49900,
+        "currency": "INR"
+      },
+      "priceBeforeMarkdown": null,
+      "availability": "IN_STOCK",
+      "categoryId": "cat_accessories"
+    },
+    "responseExample": {
+      "description": "A two metre charging cable.",
+      "priceBeforeMarkdown": null,
+      "name": "USB-C Cable",
+      "sku": "USB-C-02",
+      "price": {
+        "amountMinor": 49900,
+        "currency": "INR"
+      },
+      "availability": "IN_STOCK",
+      "categoryId": "cat_accessories",
+      "id": "prod_1001",
+      "sellerId": "seller_1001",
+      "createdAt": "2026-01-15T09:00:00.000Z"
+    },
+    "status": 200,
+    "examplePath": "/products/prod_1001",
+    "tag": "Products",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "updateProduct",
+    "method": "PATCH",
+    "path": "/products/{productId}",
+    "summary": "Update selected product details",
+    "access": "Seller",
+    "description": "Only supplied fields change. Null clears priceBeforeMarkdown; other writable fields do not accept null. This is a project-specific partial-object format, not JSON Patch.",
+    "input": "ProductPatch",
+    "response": "Product",
+    "parameters": [
+      {
+        "name": "productId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque productId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "prod_1001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": {
+      "name": "Wireless Headphones Pro"
+    },
+    "responseExample": {
+      "id": "prod_1001",
+      "name": "Wireless Headphones Pro",
+      "description": "Over-ear wireless headphones with a travel case.",
+      "sku": "WH-BLK-01",
+      "price": {
+        "amountMinor": 249900,
+        "currency": "INR"
+      },
+      "priceBeforeMarkdown": {
+        "amountMinor": 299900,
+        "currency": "INR"
+      },
+      "availability": "IN_STOCK",
+      "categoryId": "cat_audio",
+      "sellerId": "seller_1001",
+      "createdAt": "2026-01-15T09:00:00.000Z"
+    },
+    "status": 200,
+    "examplePath": "/products/prod_1001",
+    "tag": "Products",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "deleteProduct",
+    "method": "DELETE",
+    "path": "/products/{productId}",
+    "summary": "Delete a product",
+    "access": "Seller",
+    "description": "Delete the catalogue record. Returns 204 with no body. Deletion is blocked while an active cart references the product; historical order snapshots remain.",
+    "input": null,
+    "response": null,
+    "parameters": [
+      {
+        "name": "productId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque productId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "prod_1001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": null,
+    "responseExample": null,
+    "status": 204,
+    "examplePath": "/products/prod_1001",
+    "tag": "Products",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "listVariants",
+    "method": "GET",
+    "path": "/products/{productId}/variants",
+    "summary": "List product variants",
+    "access": "Public",
+    "description": "Return illustrative variants. Checkout selects a product ID, not a variant, in this demo.",
+    "input": null,
+    "response": "VariantList",
+    "parameters": [
+      {
+        "name": "productId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque productId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "prod_1001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": null,
+    "responseExample": {
+      "items": [
+        {
+          "id": "var_1001",
+          "productId": "prod_1001",
+          "sku": "WH-BLK-01",
+          "name": "Black"
+        },
+        {
+          "id": "var_1002",
+          "productId": "prod_1001",
+          "sku": "WH-BLU-01",
+          "name": "Blue"
+        }
+      ]
+    },
+    "status": 200,
+    "examplePath": "/products/prod_1001/variants",
+    "tag": "Products",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "listCategories",
+    "method": "GET",
+    "path": "/categories",
+    "summary": "List categories",
+    "access": "Public",
+    "description": "Retrieve the category IDs accepted when creating or filtering products.",
+    "input": null,
+    "response": "CategoryList",
+    "parameters": [
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": null,
+    "responseExample": {
+      "items": [
+        {
+          "id": "cat_audio",
+          "name": "Audio"
+        },
+        {
+          "id": "cat_home",
+          "name": "Home"
+        },
+        {
+          "id": "cat_accessories",
+          "name": "Accessories"
+        }
+      ]
+    },
+    "status": 200,
+    "examplePath": "/categories",
+    "tag": "Products",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "listReviews",
+    "method": "GET",
+    "path": "/products/{productId}/reviews",
+    "summary": "Read product reviews",
+    "access": "Public",
+    "description": "Return all reviews for the product. This small demo list is not paginated.",
+    "input": null,
+    "response": "ReviewList",
+    "parameters": [
+      {
+        "name": "productId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque productId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "prod_1001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": null,
+    "responseExample": {
+      "items": [
+        {
+          "id": "rev_1001",
+          "productId": "prod_1001",
+          "customerId": "cust_1001",
+          "rating": 4,
+          "comment": "Comfortable for everyday listening.",
+          "createdAt": "2026-01-17T09:00:00.000Z"
+        }
+      ]
+    },
+    "status": 200,
+    "examplePath": "/products/prod_1001/reviews",
+    "tag": "Reviews",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "addReview",
+    "method": "POST",
+    "path": "/products/{productId}/reviews",
+    "summary": "Submit a review",
+    "access": "Customer",
+    "description": "A customer may submit one review per product. The demo does not require a verified purchase. Try prod_1002; the seed customer already reviewed prod_1001.",
+    "input": "ReviewInput",
+    "response": "Review",
+    "parameters": [
+      {
+        "name": "productId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque productId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "prod_1001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": {
+      "rating": 5,
+      "comment": "Easy to set up and use."
+    },
+    "responseExample": {
+      "id": "rev_1002",
+      "productId": "prod_1002",
+      "customerId": "cust_1001",
+      "rating": 5,
+      "comment": "Easy to set up and use.",
+      "createdAt": "2026-11-13T08:38:49.263Z"
+    },
+    "status": 201,
+    "examplePath": "/products/prod_1002/reviews",
+    "tag": "Reviews",
+    "prerequisites": "The preset uses prod_1002 because the seed customer already reviewed prod_1001."
+  },
+  {
+    "id": "getMe",
+    "method": "GET",
+    "path": "/me",
+    "summary": "Retrieve your customer profile",
+    "access": "Customer",
+    "description": "Return the customer associated with the bearer token. Seller and administrator tokens are not customer identities.",
+    "input": null,
+    "response": "Customer",
+    "parameters": [
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": null,
+    "responseExample": {
+      "id": "cust_1001",
+      "name": "Demo Customer",
+      "email": "customer@example.test"
+    },
+    "status": 200,
+    "examplePath": "/me",
+    "tag": "Customers",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "updateMe",
+    "method": "PATCH",
+    "path": "/me",
+    "summary": "Change your display name",
+    "access": "Customer",
+    "description": "Update only the display name. Email and identity cannot be changed.",
+    "input": "CustomerPatch",
+    "response": "Customer",
+    "parameters": [
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": {
+      "name": "Demo Reader"
+    },
+    "responseExample": {
+      "id": "cust_1001",
+      "name": "Demo Reader",
+      "email": "customer@example.test"
+    },
+    "status": 200,
+    "examplePath": "/me",
+    "tag": "Customers",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "createCart",
+    "method": "POST",
+    "path": "/carts",
+    "summary": "Create an empty cart",
+    "access": "Customer",
+    "description": "Create an ACTIVE cart for the authenticated customer. No request body is required.",
+    "input": null,
+    "response": "Cart",
+    "parameters": [
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": null,
+    "responseExample": {
+      "id": "cart_1002",
+      "customerId": "cust_1001",
+      "status": "ACTIVE",
+      "items": [],
+      "total": {
+        "amountMinor": 0,
+        "currency": "INR"
+      }
+    },
+    "status": 201,
+    "examplePath": "/carts",
+    "tag": "Carts",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "getCart",
+    "method": "GET",
+    "path": "/carts/{cartId}",
+    "summary": "Retrieve a cart",
+    "access": "Owner",
+    "description": "Return the cart. ACTIVE totals use current catalogue prices; CHECKED_OUT carts retain the checkout snapshot. Totals exclude shipping and tax. Owners and administrators may inspect the cart.",
+    "input": null,
+    "response": "Cart",
+    "parameters": [
+      {
+        "name": "cartId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque cartId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "cart_1001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": null,
+    "responseExample": {
+      "id": "cart_1001",
+      "customerId": "cust_1001",
+      "status": "ACTIVE",
+      "items": [],
+      "total": {
+        "amountMinor": 0,
+        "currency": "INR"
+      }
+    },
+    "status": 200,
+    "examplePath": "/carts/cart_1001",
+    "tag": "Carts",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "addCartItem",
+    "method": "POST",
+    "path": "/carts/{cartId}/items",
+    "summary": "Add a product to a cart",
+    "access": "Owner",
+    "description": "Only ACTIVE carts accept changes. Quantity is 1-99, availability must be IN_STOCK, and at most 10 distinct products are allowed. Update an existing item instead of adding it again.",
+    "input": "CartItemInput",
+    "response": "Cart",
+    "parameters": [
+      {
+        "name": "cartId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque cartId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "cart_1001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": {
+      "productId": "prod_1001",
+      "quantity": 1
+    },
+    "responseExample": {
+      "id": "cart_1001",
+      "customerId": "cust_1001",
+      "status": "ACTIVE",
+      "items": [
+        {
+          "id": "item_1001",
+          "productId": "prod_1001",
+          "quantity": 1,
+          "product": {
+            "id": "prod_1001",
+            "name": "Wireless Headphones",
+            "description": "Over-ear wireless headphones with a travel case.",
+            "sku": "WH-BLK-01",
+            "price": {
+              "amountMinor": 249900,
+              "currency": "INR"
+            },
+            "priceBeforeMarkdown": {
+              "amountMinor": 299900,
+              "currency": "INR"
+            },
+            "availability": "IN_STOCK",
+            "categoryId": "cat_audio",
+            "sellerId": "seller_1001",
+            "createdAt": "2026-01-15T09:00:00.000Z"
+          },
+          "unitPrice": {
+            "amountMinor": 249900,
+            "currency": "INR"
+          }
+        }
+      ],
+      "total": {
+        "amountMinor": 249900,
+        "currency": "INR"
+      }
+    },
+    "status": 201,
+    "examplePath": "/carts/cart_1001/items",
+    "tag": "Carts",
+    "prerequisites": "Use an ACTIVE cart that does not already contain this product. The seed cart is empty after reset."
+  },
+  {
+    "id": "updateCartItem",
+    "method": "PATCH",
+    "path": "/carts/{cartId}/items/{itemId}",
+    "summary": "Set a cart item quantity",
+    "access": "Owner",
+    "description": "Replace the quantity, rather than incrementing it. Quantity zero is invalid; use DELETE to remove an item.",
+    "input": "QuantityInput",
+    "response": "Cart",
+    "parameters": [
+      {
+        "name": "cartId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque cartId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "cart_1001"
+      },
+      {
+        "name": "itemId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque itemId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "item_1001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": {
+      "quantity": 2
+    },
+    "responseExample": {
+      "id": "cart_1001",
+      "customerId": "cust_1001",
+      "status": "ACTIVE",
+      "items": [
+        {
+          "id": "item_1001",
+          "productId": "prod_1001",
+          "quantity": 2,
+          "product": {
+            "id": "prod_1001",
+            "name": "Wireless Headphones",
+            "description": "Over-ear wireless headphones with a travel case.",
+            "sku": "WH-BLK-01",
+            "price": {
+              "amountMinor": 249900,
+              "currency": "INR"
+            },
+            "priceBeforeMarkdown": {
+              "amountMinor": 299900,
+              "currency": "INR"
+            },
+            "availability": "IN_STOCK",
+            "categoryId": "cat_audio",
+            "sellerId": "seller_1001",
+            "createdAt": "2026-01-15T09:00:00.000Z"
+          },
+          "unitPrice": {
+            "amountMinor": 249900,
+            "currency": "INR"
+          }
+        }
+      ],
+      "total": {
+        "amountMinor": 499800,
+        "currency": "INR"
+      }
+    },
+    "status": 200,
+    "examplePath": "/carts/cart_1001/items/item_1001",
+    "tag": "Carts",
+    "prerequisites": "After reset, add prod_1001 to cart_1001 once and use the returned item ID."
+  },
+  {
+    "id": "removeCartItem",
+    "method": "DELETE",
+    "path": "/carts/{cartId}/items/{itemId}",
+    "summary": "Remove an item from a cart",
+    "access": "Owner",
+    "description": "Remove one item from an ACTIVE cart and return the updated cart. A second deletion returns 404.",
+    "input": null,
+    "response": "Cart",
+    "parameters": [
+      {
+        "name": "cartId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque cartId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "cart_1001"
+      },
+      {
+        "name": "itemId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque itemId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "item_1001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": null,
+    "responseExample": {
+      "id": "cart_1001",
+      "customerId": "cust_1001",
+      "status": "ACTIVE",
+      "items": [],
+      "total": {
+        "amountMinor": 0,
+        "currency": "INR"
+      }
+    },
+    "status": 200,
+    "examplePath": "/carts/cart_1001/items/item_1001",
+    "tag": "Carts",
+    "prerequisites": "After reset, add prod_1001 to cart_1001 once and use the returned item ID."
+  },
+  {
+    "id": "createOrder",
+    "method": "POST",
+    "path": "/orders",
+    "summary": "Place an order",
+    "access": "Customer",
+    "description": "Create an order from your nonempty ACTIVE cart. Send Idempotency-Key. A successful order snapshots item prices and closes the cart. No payment, tax, shipping charge, or stock reservation is performed.",
+    "input": "OrderInput",
+    "response": "Order",
+    "parameters": [
+      {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "description": "1-128 characters. Scoped to the customer. Retained until server restart or lab reset. Reusing the key with different details returns 409.",
+        "schema": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "example": "order-demo-001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": {
+      "cartId": "cart_1001",
+      "shippingAddress": {
+        "line1": "10 Demo Street",
+        "city": "Bengaluru",
+        "postalCode": "560001",
+        "country": "IN"
+      }
+    },
+    "responseExample": {
+      "id": "ord_1002",
+      "customerId": "cust_1001",
+      "cartId": "cart_1001",
+      "status": "CONFIRMED",
+      "items": [
+        {
+          "id": "oi_item_1001",
+          "productId": "prod_1001",
+          "name": "Wireless Headphones",
+          "quantity": 1,
+          "unitPrice": {
+            "amountMinor": 249900,
+            "currency": "INR"
+          }
+        }
+      ],
+      "total": {
+        "amountMinor": 249900,
+        "currency": "INR"
+      },
+      "shippingAddress": {
+        "line1": "10 Demo Street",
+        "city": "Bengaluru",
+        "postalCode": "560001",
+        "country": "IN"
+      },
+      "createdAt": "2026-11-13T08:38:49.266Z"
+    },
+    "status": 201,
+    "examplePath": "/orders",
+    "tag": "Orders",
+    "prerequisites": "After reset, add an available product to cart_1001 before placing an order. Preserve the same key and details for retries."
+  },
+  {
+    "id": "listOrders",
+    "method": "GET",
+    "path": "/orders",
+    "summary": "List your orders",
+    "access": "CustomerOrAdmin",
+    "description": "Customers see only their own orders. Administrators see all orders. Uses limit/offset pagination in creation insertion order.",
+    "input": null,
+    "response": "OrderPage",
+    "parameters": [
+      {
+        "name": "limit",
+        "in": "query",
+        "description": "Maximum items in this page.",
+        "schema": {
+          "type": "integer",
+          "default": 20,
+          "minimum": 1,
+          "maximum": 100
+        }
+      },
+      {
+        "name": "offset",
+        "in": "query",
+        "description": "Zero-based position to begin reading.",
+        "schema": {
+          "type": "integer",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 1000000
+        }
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": null,
+    "responseExample": {
+      "items": [
+        {
+          "id": "ord_1001",
+          "customerId": "cust_1001",
+          "cartId": "cart_seed",
+          "status": "DELIVERED",
+          "items": [
+            {
+              "id": "oi_seed",
+              "productId": "prod_1001",
+              "name": "Wireless Headphones",
+              "quantity": 1,
+              "unitPrice": {
+                "amountMinor": 249900,
+                "currency": "INR"
+              }
+            }
+          ],
+          "total": {
+            "amountMinor": 249900,
+            "currency": "INR"
+          },
+          "shippingAddress": {
+            "line1": "10 Demo Street",
+            "city": "Bengaluru",
+            "postalCode": "560001",
+            "country": "IN"
+          },
+          "createdAt": "2026-01-16T09:00:00.000Z"
+        }
+      ],
+      "total": 1,
+      "limit": 20,
+      "offset": 0
+    },
+    "status": 200,
+    "examplePath": "/orders",
+    "tag": "Orders",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "getOrder",
+    "method": "GET",
+    "path": "/orders/{orderId}",
+    "summary": "Retrieve an order",
+    "access": "Owner",
+    "description": "Return the order snapshot. Unlike an active cart, its item names and prices do not change when the catalogue changes.",
+    "input": null,
+    "response": "Order",
+    "parameters": [
+      {
+        "name": "orderId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque orderId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "ord_1001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": null,
+    "responseExample": {
+      "id": "ord_1001",
+      "customerId": "cust_1001",
+      "cartId": "cart_seed",
+      "status": "DELIVERED",
+      "items": [
+        {
+          "id": "oi_seed",
+          "productId": "prod_1001",
+          "name": "Wireless Headphones",
+          "quantity": 1,
+          "unitPrice": {
+            "amountMinor": 249900,
+            "currency": "INR"
+          }
+        }
+      ],
+      "total": {
+        "amountMinor": 249900,
+        "currency": "INR"
+      },
+      "shippingAddress": {
+        "line1": "10 Demo Street",
+        "city": "Bengaluru",
+        "postalCode": "560001",
+        "country": "IN"
+      },
+      "createdAt": "2026-01-16T09:00:00.000Z"
+    },
+    "status": 200,
+    "examplePath": "/orders/ord_1001",
+    "tag": "Orders",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "cancelOrder",
+    "method": "POST",
+    "path": "/orders/{orderId}/cancellations",
+    "summary": "Cancel an order",
+    "access": "Owner",
+    "description": "Only CONFIRMED orders can transition to CANCELLED. Repeating cancellation returns the already-cancelled order. DELIVERED orders return 409.",
+    "input": "CancellationInput",
+    "response": "Order",
+    "parameters": [
+      {
+        "name": "orderId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque orderId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "ord_1001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": {
+      "reason": "Ordered by mistake."
+    },
+    "responseExample": {
+      "id": "ord_1002",
+      "customerId": "cust_1001",
+      "cartId": "cart_1001",
+      "status": "CANCELLED",
+      "items": [
+        {
+          "id": "oi_item_1001",
+          "productId": "prod_1001",
+          "name": "Wireless Headphones",
+          "quantity": 1,
+          "unitPrice": {
+            "amountMinor": 249900,
+            "currency": "INR"
+          }
+        }
+      ],
+      "total": {
+        "amountMinor": 249900,
+        "currency": "INR"
+      },
+      "shippingAddress": {
+        "line1": "10 Demo Street",
+        "city": "Bengaluru",
+        "postalCode": "560001",
+        "country": "IN"
+      },
+      "createdAt": "2026-11-13T08:38:49.267Z"
+    },
+    "status": 200,
+    "examplePath": "/orders/ord_1002/cancellations",
+    "tag": "Orders",
+    "prerequisites": "Create a cart item and order first; use the returned order ID. The seeded delivered order cannot be cancelled."
+  },
+  {
+    "id": "listShipments",
+    "method": "GET",
+    "path": "/orders/{orderId}/shipments",
+    "summary": "Track order shipments",
+    "access": "Owner",
+    "description": "The delivered seed order ord_1001 has a shipment. New orders have an empty shipment list; no automatic delivery progression is simulated.",
+    "input": null,
+    "response": "ShipmentList",
+    "parameters": [
+      {
+        "name": "orderId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque orderId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "ord_1001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": null,
+    "responseExample": {
+      "items": [
+        {
+          "id": "ship_1001",
+          "orderId": "ord_1001",
+          "status": "DELIVERED",
+          "trackingCode": "DEMO-TRACK-1001"
+        }
+      ]
+    },
+    "status": 200,
+    "examplePath": "/orders/ord_1001/shipments",
+    "tag": "Orders",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "createReturn",
+    "method": "POST",
+    "path": "/orders/{orderId}/returns",
+    "summary": "Request an order return",
+    "access": "Owner",
+    "description": "Request a whole-order return for a DELIVERED order. Only one request per order is allowed. Refunds, item-level quantities, and return fulfilment are outside the demo.",
+    "input": "ReturnInput",
+    "response": "ReturnRequest",
+    "parameters": [
+      {
+        "name": "orderId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque orderId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "ord_1001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": {
+      "reason": "The item is not suitable."
+    },
+    "responseExample": {
+      "id": "ret_1001",
+      "orderId": "ord_1001",
+      "customerId": "cust_1001",
+      "reason": "The item is not suitable.",
+      "status": "REQUESTED",
+      "createdAt": "2026-11-13T08:38:49.267Z"
+    },
+    "status": 201,
+    "examplePath": "/orders/ord_1001/returns",
+    "tag": "Returns",
+    "prerequisites": "Use the seed dataset or adjust IDs to match your current local data. Writes may affect later examples."
+  },
+  {
+    "id": "getReturn",
+    "method": "GET",
+    "path": "/returns/{returnId}",
+    "summary": "Retrieve a return request",
+    "access": "Owner",
+    "description": "Return the recorded request and REQUESTED status. Owners and administrators have access.",
+    "input": null,
+    "response": "ReturnRequest",
+    "parameters": [
+      {
+        "name": "returnId",
+        "in": "path",
+        "required": true,
+        "description": "Opaque returnId identifier.",
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": "ret_1001"
+      },
+      {
+        "name": "X-Demo-Error",
+        "in": "header",
+        "description": "Optional deterministic lab trigger. rate-limit returns 429 with Retry-After: 5. This is not a real quota system.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "rate-limit"
+          ]
+        }
+      }
+    ],
+    "example": null,
+    "responseExample": {
+      "id": "ret_1001",
+      "orderId": "ord_1001",
+      "customerId": "cust_1001",
+      "reason": "The item is not suitable.",
+      "status": "REQUESTED",
+      "createdAt": "2026-11-13T08:38:49.268Z"
+    },
+    "status": 200,
+    "examplePath": "/returns/ret_1001",
+    "tag": "Returns",
+    "prerequisites": "Create a return for ord_1001 first, then use the returned return ID."
+  }
+]

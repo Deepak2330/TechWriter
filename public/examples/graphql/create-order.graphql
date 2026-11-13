@@ -1,0 +1,6 @@
+mutation PlaceOrder($input: CreateOrderInput!) {
+  createOrder(input: $input) {
+    order { id status total { amountMinor currency } items { productId name quantity } }
+    replayed
+  }
+}

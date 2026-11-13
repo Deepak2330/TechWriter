@@ -1,0 +1,13 @@
+{
+  "input": {
+    "name": "Travel Mug",
+    "description": "Reusable mug for the learning catalogue.",
+    "sku": "TM-TEAL-01",
+    "price": {
+      "amountMinor": 79900,
+      "currency": "INR"
+    },
+    "availability": "IN_STOCK",
+    "categoryId": "cat_home"
+  }
+}

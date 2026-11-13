@@ -1,0 +1,218 @@
+[
+  {
+    "id": "lab01",
+    "number": 1,
+    "title": "Plan the product-card documentation",
+    "summary": "A frontend developer needs to display a product name, current price, and optional original price. The draft contains only a list of URLs.",
+    "category": "Planning",
+    "lesson": "l01",
+    "path": "content/labs/lab01.md"
+  },
+  {
+    "id": "lab02",
+    "number": 2,
+    "title": "Capture a reproducible HTTP exchange",
+    "summary": "A reviewer cannot tell whether a response screenshot came from the documented request.",
+    "category": "HTTP",
+    "lesson": "l05",
+    "path": "content/labs/lab02.md"
+  },
+  {
+    "id": "lab03",
+    "number": 3,
+    "title": "Repair a JSON request body",
+    "summary": "A writer copied a JavaScript object literal into a JSON request editor.",
+    "category": "Data formats",
+    "lesson": "l06",
+    "path": "content/labs/lab03.md"
+  },
+  {
+    "id": "lab04",
+    "number": 4,
+    "title": "Write a defensive fetch example",
+    "summary": "A sample always calls response.json(), even for DELETE success, and treats every fetch resolution as success.",
+    "category": "JavaScript",
+    "lesson": "l08",
+    "path": "content/labs/lab04.md"
+  },
+  {
+    "id": "lab05",
+    "number": 5,
+    "title": "Compare product PUT and PATCH",
+    "summary": "The draft says both methods accept any subset of product fields.",
+    "category": "REST",
+    "lesson": "l10",
+    "path": "content/labs/lab05.md"
+  },
+  {
+    "id": "lab06",
+    "number": 6,
+    "title": "Document collection boundaries",
+    "summary": "A product-listing page names limit and offset but does not state bounds or sorting behavior.",
+    "category": "REST",
+    "lesson": "l11",
+    "path": "content/labs/lab06.md"
+  },
+  {
+    "id": "lab07",
+    "number": 7,
+    "title": "Write a Problem Details guide",
+    "summary": "The API returns fields named type, title, status, detail, instance, code, and fields, but the draft calls all of them standard RFC members.",
+    "category": "Errors",
+    "lesson": "l12",
+    "path": "content/labs/lab07.md"
+  },
+  {
+    "id": "lab08",
+    "number": 8,
+    "title": "Write an endpoint reference",
+    "summary": "A teammate gives you the add-cart-item operation but no prose reference.",
+    "category": "REST writing",
+    "lesson": "l13",
+    "path": "content/labs/lab08.md"
+  },
+  {
+    "id": "lab09",
+    "number": 9,
+    "title": "Verify an order workflow",
+    "summary": "A tutorial hard-codes every generated identifier and says checkout charges a card.",
+    "category": "Integration",
+    "lesson": "l15",
+    "path": "content/labs/lab09.md"
+  },
+  {
+    "id": "lab10",
+    "number": 10,
+    "title": "Test ownership rather than token presence",
+    "summary": "The reference says any bearer token can retrieve any cart.",
+    "category": "Security",
+    "lesson": "l17",
+    "path": "content/labs/lab10.md"
+  },
+  {
+    "id": "lab11",
+    "number": 11,
+    "title": "Prove order idempotency",
+    "summary": "A client lost the response after placing an order and proposes a new key for every retry.",
+    "category": "Reliability",
+    "lesson": "l18",
+    "path": "content/labs/lab11.md"
+  },
+  {
+    "id": "lab12",
+    "number": 12,
+    "title": "Document conditional GET",
+    "summary": "A client repeatedly downloads an unchanged product representation.",
+    "category": "Caching",
+    "lesson": "l19",
+    "path": "content/labs/lab12.md"
+  },
+  {
+    "id": "lab13",
+    "number": 13,
+    "title": "Repair an OpenAPI operation",
+    "summary": "A path parameter is optional and a request body was placed in the query parameter list.",
+    "category": "OpenAPI",
+    "lesson": "l22",
+    "path": "content/labs/lab13.md"
+  },
+  {
+    "id": "lab14",
+    "number": 14,
+    "title": "Separate presence from null",
+    "summary": "A writer assumes excluding a field from required makes null valid.",
+    "category": "OpenAPI",
+    "lesson": "l23",
+    "path": "content/labs/lab14.md"
+  },
+  {
+    "id": "lab15",
+    "number": 15,
+    "title": "Review security requirements",
+    "summary": "An API defines global bearer security, but public product reads should not require it.",
+    "category": "OpenAPI",
+    "lesson": "l24",
+    "path": "content/labs/lab15.md"
+  },
+  {
+    "id": "lab16",
+    "number": 16,
+    "title": "Detect example drift",
+    "summary": "A response example uses quantity 100 while its schema allows 1-99.",
+    "category": "Validation",
+    "lesson": "l28",
+    "path": "content/labs/lab16.md"
+  },
+  {
+    "id": "lab17",
+    "number": 17,
+    "title": "Explain four GraphQL list types",
+    "summary": "A schema review confuses empty lists with null lists.",
+    "category": "GraphQL",
+    "lesson": "l30",
+    "path": "content/labs/lab17.md"
+  },
+  {
+    "id": "lab18",
+    "number": 18,
+    "title": "Write a query with variables and aliases",
+    "summary": "A product comparison needs two products without two indistinguishable response keys.",
+    "category": "GraphQL",
+    "lesson": "l31",
+    "path": "content/labs/lab18.md"
+  },
+  {
+    "id": "lab19",
+    "number": 19,
+    "title": "Explain partial data",
+    "summary": "An anonymous query requests both product and me. A developer discards the entire response when errors exists.",
+    "category": "GraphQL errors",
+    "lesson": "l33",
+    "path": "content/labs/lab19.md"
+  },
+  {
+    "id": "lab20",
+    "number": 20,
+    "title": "Write a cursor-pagination loop",
+    "summary": "A client increments a decoded cursor and changes sorting between pages.",
+    "category": "GraphQL pagination",
+    "lesson": "l34",
+    "path": "content/labs/lab20.md"
+  },
+  {
+    "id": "lab21",
+    "number": 21,
+    "title": "Document a GraphQL mutation",
+    "summary": "A mutation page lists input types but omits state requirements and duplicate behavior.",
+    "category": "GraphQL writing",
+    "lesson": "l39",
+    "path": "content/labs/lab21.md"
+  },
+  {
+    "id": "lab22",
+    "number": 22,
+    "title": "Review an enum change",
+    "summary": "A proposed release adds PREORDER while an integration treats every unknown availability value as IN_STOCK.",
+    "category": "API evolution",
+    "lesson": "l43",
+    "path": "content/labs/lab22.md"
+  },
+  {
+    "id": "lab23",
+    "number": 23,
+    "title": "Prepare a documentation pull request",
+    "summary": "A quantity correction was made only in a generated page and the author claims every test passed.",
+    "category": "Docs-as-code",
+    "lesson": "l41",
+    "path": "content/labs/lab23.md"
+  },
+  {
+    "id": "lab24",
+    "number": 24,
+    "title": "Run a portfolio release review",
+    "summary": "The project is ready to share, but its README claims official marketplace affiliation and production readiness.",
+    "category": "Portfolio",
+    "lesson": "l48",
+    "path": "content/labs/lab24.md"
+  }
+]

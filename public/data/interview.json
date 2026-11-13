@@ -1,0 +1,122 @@
+[
+  {
+    "question": "How do you begin documenting an unfamiliar API?",
+    "answer": "Identify the readers and their tasks, gather contracts and working access, execute a small request, and record questions. Compare the schema, implementation behavior, and SME explanations instead of assuming any one artifact is complete. Build an information architecture around outcomes."
+  },
+  {
+    "question": "How do you distinguish a tutorial from a reference?",
+    "answer": "A tutorial guides a learning sequence with prerequisites and an observable result. A reference supports precise lookup of operations, fields, constraints, and errors. Link them, but do not overload the first-success path with every possible option."
+  },
+  {
+    "question": "What belongs in an endpoint reference?",
+    "answer": "Purpose, method/path, access, parameters, bodies, requiredness, nullability, defaults, constraints, success responses, relevant headers, errors, examples, side effects, and related tasks. Verify the exact behavior rather than filling a template with guesses."
+  },
+  {
+    "question": "How do you verify code samples?",
+    "answer": "Execute them from the documented starting state, validate payloads, inspect real responses, and test relevant failures. Carry generated IDs forward and avoid brittle timestamp comparisons. Report blocked checks rather than claiming success."
+  },
+  {
+    "question": "How do REST and GraphQL documentation differ?",
+    "answer": "REST references organize around method/path operations and representation schemas. GraphQL references also need SDL, fields, arguments, selection sets, variables, nullability, and execution errors. Both need authentication, workflows, business constraints, and recovery guidance."
+  },
+  {
+    "question": "What is the difference between optional and nullable?",
+    "answer": "Optional permits absence; nullable permits a present null value. Explain both dimensions for inputs and outputs. In updates, omission may preserve an old value while explicit null clears it or fails a business rule."
+  },
+  {
+    "question": "How would you explain HTTP idempotency?",
+    "answer": "Repeating an identical request has the same intended server effect as making it once. Responses need not be byte-identical. A POST operation can add a documented idempotency-key mechanism, but its scope and retention must be stated."
+  },
+  {
+    "question": "How do you document authentication safely?",
+    "answer": "Identify supported credentials, acquisition flow, permissions, storage guidance, and safe examples without real secrets. Distinguish authentication from authorization and OAuth from user authentication. Use placeholders or synthetic demo values honestly."
+  },
+  {
+    "question": "What makes an error guide useful?",
+    "answer": "It maps observable symptoms and machine codes to likely causes and specific recovery steps. It distinguishes input fixes, permission problems, retries, and uncertain writes. It avoids exposing internal stack traces or recommending infinite retries."
+  },
+  {
+    "question": "What does OpenAPI provide?",
+    "answer": "A machine-readable description of HTTP operations, schemas, parameters, responses, and security requirements. Tooling can render and validate it, but a complete developer experience still needs task and conceptual documentation."
+  },
+  {
+    "question": "How do you avoid OpenAPI drift?",
+    "answer": "Identify canonical sources, generate derived artifacts consistently, validate schemas and examples, and compare contracts with executed behavior in tests. Review prose constraints that may not be machine-enforced."
+  },
+  {
+    "question": "How do OpenAPI versions affect writing?",
+    "answer": "They determine available features and schema semantics. For example, nullability differs between 3.0 conventions and 3.1 JSON Schema use. Record the selected version and tool compatibility rather than mixing syntax or claiming latest without verification."
+  },
+  {
+    "question": "How do you document GraphQL nullability?",
+    "answer": "Explain the type wrapper at each level and what happens when a required field fails. A non-null list can be empty; a nullable item is different from a nullable list. Include a partial-data example tied to actual schema boundaries."
+  },
+  {
+    "question": "What is a GraphQL operation reference?",
+    "answer": "A task-focused query or mutation document with variables, access, expected selection shape, prerequisites, and errors. It complements the schema reference and should validate against the shipped SDL."
+  },
+  {
+    "question": "How do you explain GraphQL pagination?",
+    "answer": "Document the API's specific convention, arguments, defaults, limits, next-page step, stopping condition, and consistency guarantees. Treat cursors as opaque and avoid claiming that connections are mandatory GraphQL features."
+  },
+  {
+    "question": "How do you document a mutation?",
+    "answer": "Start with its business change, preconditions, roles, inputs, state transitions, and side effects. Then show a success payload and recovery paths. Explain idempotency and do not confuse selected output fields with the scope of the write."
+  },
+  {
+    "question": "How do you handle contradictory SME feedback?",
+    "answer": "Record the disagreement precisely, include a reproducible example, and ask the responsible owner to confirm supported behavior and release scope. Do not merge contradictory statements into vague prose or silently choose the convenient answer."
+  },
+  {
+    "question": "How do you write release notes?",
+    "answer": "Describe what changed, affected consumers, impact, and required action, then link to updated references or a migration guide. Use verified dates and distinguish a proposal from a deployed capability."
+  },
+  {
+    "question": "What can make an additive change risky?",
+    "answer": "New response properties can affect strict validators, and new enum values can break exhaustive handling. Evaluate consumer assumptions and the API's compatibility policy rather than classifying all additions as harmless."
+  },
+  {
+    "question": "What belongs in a migration guide?",
+    "answer": "Old and new behavior, affected operations, prerequisites, step-by-step code or configuration changes, before/after examples, tests, rollout timing, and recovery or support guidance. Identify unresolved product decisions before publication."
+  },
+  {
+    "question": "How do you prioritize documentation defects?",
+    "answer": "Consider reader blockage, data or security risk, frequency, and release timing. A broken installation command or misleading retry rule usually outranks decorative issues. Use task evidence and support patterns rather than page views alone."
+  },
+  {
+    "question": "How would you review a sample response?",
+    "answer": "Check it against the schema and actual request selection, inspect required and nullable fields, validate constraints, and confirm dataset assumptions. Label excerpts and dynamic fields clearly. Avoid inventing headers or business side effects."
+  },
+  {
+    "question": "How do you use Git as a writer?",
+    "answer": "Work on focused branches, edit authoritative sources, inspect diffs, run checks, and submit a reviewable change with evidence. Avoid secrets and unrelated generated files. Preserve traceability from the feature to its documentation changes."
+  },
+  {
+    "question": "How do you assess documentation quality?",
+    "answer": "Combine technical correctness, task completion, clarity, navigation, accessibility, and maintainability. Automated checks catch some defects; observed reader tasks and expert review reveal others. Report metrics in context."
+  },
+  {
+    "question": "What should a webhook guide include?",
+    "answer": "Events, payloads, endpoint setup, signature verification, delivery guarantees, retry schedules, duplicate and out-of-order handling, replay protection, and troubleshooting. Separate an illustrative design from a working delivery system."
+  },
+  {
+    "question": "How do you explain rate limits?",
+    "answer": "State the unit, time window, scope, relevant headers, failure response, and retry advice. Clarify whether limits are fixed, sliding, or another policy. Do not invent production limits from a local demo's forced-error example."
+  },
+  {
+    "question": "How do you document money?",
+    "answer": "State the numeric representation, currency code, minor-unit convention, rounding rules, supported currencies, and bounds. Do not assume all currencies use two decimal places or use floating-point examples without a defined policy."
+  },
+  {
+    "question": "How would you document a custom GraphQL scalar?",
+    "answer": "Describe its semantic meaning, serialized form, accepted inputs, validation rules, examples, and errors. The name DateTime alone does not specify timezone, precision, or accepted formats."
+  },
+  {
+    "question": "How do you present a self-directed portfolio honestly?",
+    "answer": "Name the fictional scenario, audience, artifacts, your contribution, tests, and limitations. Do not imply employment or official affiliation. Include source and a clear path to a working example."
+  },
+  {
+    "question": "What do you do when you cannot run a required test?",
+    "answer": "Preserve the test, record the dependency or environment blocker, and distinguish static review from execution evidence. Provide exact commands to run it elsewhere and avoid counting it as passed."
+  }
+]

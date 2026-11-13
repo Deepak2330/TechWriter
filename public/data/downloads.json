@@ -1,0 +1,106 @@
+[
+  {
+    "path": "downloads/templates/api-overview.md",
+    "filename": "api-overview.md",
+    "extension": "MD",
+    "title": "API overview",
+    "description": "Purpose, audience, environment, capabilities, and boundaries.",
+    "mime": "text/markdown"
+  },
+  {
+    "path": "downloads/templates/quickstart.md",
+    "filename": "quickstart.md",
+    "extension": "MD",
+    "title": "Quickstart",
+    "description": "A reproducible path to one useful success.",
+    "mime": "text/markdown"
+  },
+  {
+    "path": "downloads/templates/rest-endpoint.md",
+    "filename": "rest-endpoint.md",
+    "extension": "MD",
+    "title": "REST endpoint reference",
+    "description": "Operation purpose, field tables, responses, and recovery.",
+    "mime": "text/markdown"
+  },
+  {
+    "path": "downloads/templates/graphql-operation.md",
+    "filename": "graphql-operation.md",
+    "extension": "MD",
+    "title": "GraphQL operation reference",
+    "description": "Document, variables, selected output, and failure behavior.",
+    "mime": "text/markdown"
+  },
+  {
+    "path": "downloads/templates/schema-field-table.md",
+    "filename": "schema-field-table.md",
+    "extension": "MD",
+    "title": "Schema and field documentation",
+    "description": "A reusable business-focused field table.",
+    "mime": "text/markdown"
+  },
+  {
+    "path": "downloads/templates/authentication-guide.md",
+    "filename": "authentication-guide.md",
+    "extension": "MD",
+    "title": "Authentication guide",
+    "description": "Credentials, roles, ownership, and safe handling.",
+    "mime": "text/markdown"
+  },
+  {
+    "path": "downloads/templates/error-guide.md",
+    "filename": "error-guide.md",
+    "extension": "MD",
+    "title": "Error and troubleshooting guide",
+    "description": "Symptoms, causes, and actionable recovery.",
+    "mime": "text/markdown"
+  },
+  {
+    "path": "downloads/templates/integration-guide.md",
+    "filename": "integration-guide.md",
+    "extension": "MD",
+    "title": "Integration tutorial",
+    "description": "A multi-operation workflow with identifier handoffs.",
+    "mime": "text/markdown"
+  },
+  {
+    "path": "downloads/templates/release-notes.md",
+    "filename": "release-notes.md",
+    "extension": "MD",
+    "title": "Release notes",
+    "description": "Consumer impact rather than internal ticket summaries.",
+    "mime": "text/markdown"
+  },
+  {
+    "path": "downloads/templates/migration-guide.md",
+    "filename": "migration-guide.md",
+    "extension": "MD",
+    "title": "Migration guide",
+    "description": "Before/after behavior and a tested adaptation path.",
+    "mime": "text/markdown"
+  },
+  {
+    "path": "downloads/templates/sme-interview.md",
+    "filename": "sme-interview.md",
+    "extension": "MD",
+    "title": "SME interview questionnaire",
+    "description": "Focused questions with an evidence record.",
+    "mime": "text/markdown"
+  },
+  {
+    "path": "downloads/templates/documentation-review.md",
+    "filename": "documentation-review.md",
+    "extension": "MD",
+    "title": "Documentation review checklist",
+    "description": "Technical, editorial, and usability review.",
+    "mime": "text/markdown"
+  },
+  {
+    "path": "downloads/templates/api-release-checklist.md",
+    "filename": "api-release-checklist.md",
+    "extension": "MD",
+    "title": "API release readiness checklist",
+    "description": "Coordinate contracts, content, tests, and publication.",
+    "mime": "text/markdown"
+  }
+]

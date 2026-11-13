@@ -1,0 +1,1 @@
+query OtherCart { cart(id: "cart_1001") { id customerId } }

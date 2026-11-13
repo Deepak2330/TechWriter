@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Explain quantity semantics",
+    "before": "quantity: The quantity.",
+    "after": "quantity: Integer from 1 through 99. Updating this field replaces the current cart-item quantity; use the remove operation to delete an item.",
+    "why": "The revision adds range, update semantics, and the correct removal path."
+  },
+  {
+    "title": "Explain nullable money",
+    "before": "Original price. Optional.",
+    "after": "priceBeforeMarkdown is null when no original price is recorded. When present, it contains INR minor units and must be at least the current price.",
+    "why": "Optional presence and nullable value are different; the new wording explains the actual output."
+  },
+  {
+    "title": "Avoid universal GraphQL status claims",
+    "before": "All GraphQL requests return 200.",
+    "after": "Inspect HTTP status and the GraphQL data/errors envelope. Request and transport failures can use non-200 statuses; execution may return partial data.",
+    "why": "The original collapses transport and execution behavior into an incorrect universal rule."
+  },
+  {
+    "title": "Clarify idempotent retry",
+    "before": "Try the order again with a new key.",
+    "after": "For the same order intent after an uncertain result, reuse the original idempotency key and identical details while the server retains that result.",
+    "why": "New keys identify new intents and undermine duplicate protection."
+  },
+  {
+    "title": "State ownership",
+    "before": "Use a token to get any cart.",
+    "after": "Use the cart owner's customer token or the administrator token. Another customer's token is not authorized to retrieve this cart.",
+    "why": "Authentication alone does not grant resource access."
+  },
+  {
+    "title": "Correct PUT/PATCH advice",
+    "before": "PUT and PATCH both update whatever fields you send.",
+    "after": "PUT replaces the writable product representation and requires its mandatory fields. PATCH changes only supplied fields and preserves omitted values.",
+    "why": "The revision distinguishes replacement from partial modification."
+  },
+  {
+    "title": "Make an error actionable",
+    "before": "Invalid request.",
+    "after": "Quantity must be an integer from 1 through 99. Correct the input; do not retry the same invalid request unchanged.",
+    "why": "It names the field, rule, and recovery instead of merely restating failure."
+  },
+  {
+    "title": "Scope an exact response",
+    "before": "This response always contains ord_1002.",
+    "after": "After a reset and with no intervening order creation, the first new order uses ord_1002. General clients must use the ID returned by their own request.",
+    "why": "Examples should not turn seeded sequence behavior into a universal contract."
+  },
+  {
+    "title": "Separate return from refund",
+    "before": "CreateReturn refunds the order.",
+    "after": "createReturn records one whole-order return request for a delivered order. The local demo does not process refunds or arrange return shipping.",
+    "why": "The original invents side effects not implemented by the API."
+  },
+  {
+    "title": "Explain pagination stability",
+    "before": "Cursors guarantee no missing products.",
+    "after": "Use endCursor unchanged with the same filters and sorting. This demo uses offset-backed cursors, so catalogue changes can cause repeats or skips.",
+    "why": "Opaque cursor syntax does not imply snapshot consistency."
+  },
+  {
+    "title": "Fix a generated-docs claim",
+    "before": "The OpenAPI renderer is the complete developer guide.",
+    "after": "The renderer provides a contract reference. Add quickstarts, workflows, conceptual explanations, and troubleshooting for a complete documentation set.",
+    "why": "Tool-generated reference cannot supply absent task context."
+  },
+  {
+    "title": "Report tests honestly",
+    "before": "All GraphQL tests passed even though installation failed.",
+    "after": "GraphQL execution tests were skipped because the runtime dependencies could not be installed. The included tests can run after npm install in a network-enabled environment.",
+    "why": "A transparent limitation is preferable to fabricated verification."
+  }
+]

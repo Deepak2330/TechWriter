@@ -1,0 +1,442 @@
+[
+  {
+    "term": "Accept",
+    "definition": "A request header expressing which response media types a client can accept."
+  },
+  {
+    "term": "Alias",
+    "definition": "A response name assigned to a selected GraphQL field, useful for repeated selections with different arguments."
+  },
+  {
+    "term": "allOf",
+    "definition": "A JSON Schema condition requiring a value to satisfy every listed subschema."
+  },
+  {
+    "term": "anyOf",
+    "definition": "A JSON Schema condition requiring a value to match at least one listed subschema."
+  },
+  {
+    "term": "API",
+    "definition": "A defined interface through which software requests capabilities or data from another component."
+  },
+  {
+    "term": "API contract",
+    "definition": "The agreed operations, inputs, outputs, constraints, errors, and behavior a consumer can rely on."
+  },
+  {
+    "term": "API key",
+    "definition": "A credential or application identifier whose exact permissions and security properties depend on the API."
+  },
+  {
+    "term": "API reference",
+    "definition": "Structured documentation of individual operations and data elements, usually optimized for lookup."
+  },
+  {
+    "term": "Authentication",
+    "definition": "Establishing the identity or credentials of an actor."
+  },
+  {
+    "term": "Authorization",
+    "definition": "Deciding whether an actor may perform an action on a particular resource or field."
+  },
+  {
+    "term": "Backoff",
+    "definition": "Increasing the delay between retries to reduce repeated load and avoid immediate repeated failures."
+  },
+  {
+    "term": "Base URL",
+    "definition": "The common scheme, host, and path prefix used by a group of API operations."
+  },
+  {
+    "term": "Bearer token",
+    "definition": "A credential whose possession enables its use; protect it because another holder may be able to act with it."
+  },
+  {
+    "term": "Breaking change",
+    "definition": "A change that can invalidate a previously supported consumer interaction or assumption."
+  },
+  {
+    "term": "Business rule",
+    "definition": "A domain condition beyond basic shape, such as allowing a return only for a delivered order."
+  },
+  {
+    "term": "Cache-Control",
+    "definition": "HTTP directives that govern caching behavior for requests or responses."
+  },
+  {
+    "term": "Conceptual explanation",
+    "definition": "Documentation that develops understanding of why and how a system behaves."
+  },
+  {
+    "term": "Conditional request",
+    "definition": "A request whose processing depends on supplied conditions, such as a matching representation validator."
+  },
+  {
+    "term": "Connection",
+    "definition": "A pagination convention typically exposing edges and pageInfo; it is not required for every GraphQL list."
+  },
+  {
+    "term": "Constraint",
+    "definition": "A rule limiting valid data, such as a maximum length or an integer range."
+  },
+  {
+    "term": "Content negotiation",
+    "definition": "Selection of a response representation using request preferences and server capabilities."
+  },
+  {
+    "term": "Content-Type",
+    "definition": "A header identifying the media type of the associated representation."
+  },
+  {
+    "term": "Contract testing",
+    "definition": "Checking that requests, responses, or behavior agree with the documented machine-readable contract."
+  },
+  {
+    "term": "CORS",
+    "definition": "Browser-enforced rules governing whether frontend code can read cross-origin responses; it is not an API authorization system."
+  },
+  {
+    "term": "Cursor",
+    "definition": "An opaque continuation value whose interpretation and validity are controlled by the server."
+  },
+  {
+    "term": "Default",
+    "definition": "A value or behavior applied when an input is omitted, if the implementation or contract defines one."
+  },
+  {
+    "term": "DELETE",
+    "definition": "An HTTP method requesting removal of the target resource association; repeat responses may differ despite idempotent intent."
+  },
+  {
+    "term": "Deprecation",
+    "definition": "A notice discouraging use of an element while it remains available, normally with a replacement and policy."
+  },
+  {
+    "term": "Developer experience",
+    "definition": "The quality of the end-to-end experience of discovering, integrating, testing, and maintaining an API."
+  },
+  {
+    "term": "Directive",
+    "definition": "GraphQL syntax that modifies interpretation or execution at allowed locations, such as @include."
+  },
+  {
+    "term": "Discriminator",
+    "definition": "OpenAPI metadata that helps associate a payload discriminator value with a schema; it does not replace validation semantics."
+  },
+  {
+    "term": "Docs-as-code",
+    "definition": "Maintaining documentation through text sources, version control, review, automated checks, and repeatable builds."
+  },
+  {
+    "term": "Edge",
+    "definition": "A connection item containing a node and often a cursor or relationship metadata."
+  },
+  {
+    "term": "Endpoint",
+    "definition": "A callable interface location, often described by an HTTP method and path in REST references."
+  },
+  {
+    "term": "Enum",
+    "definition": "A defined set of named allowed values, such as IN_STOCK and OUT_OF_STOCK."
+  },
+  {
+    "term": "ETag",
+    "definition": "An opaque validator associated with a representation, used in conditional requests."
+  },
+  {
+    "term": "Example",
+    "definition": "An illustrative or observed instance; it is not automatically a default or exhaustive specification."
+  },
+  {
+    "term": "Federation",
+    "definition": "A platform-specific approach to composing and executing a graph across separately managed schemas or services."
+  },
+  {
+    "term": "Fragment",
+    "definition": "A reusable or inline GraphQL selection constrained by a type condition."
+  },
+  {
+    "term": "GET",
+    "definition": "An HTTP method for retrieving a selected representation with safe, idempotent semantics."
+  },
+  {
+    "term": "GraphQL",
+    "definition": "A typed query language and execution model in which clients select fields from a schema."
+  },
+  {
+    "term": "HEAD",
+    "definition": "A method like GET that returns response metadata without response content."
+  },
+  {
+    "term": "How-to guide",
+    "definition": "Task-oriented instructions for a reader who already understands the relevant concepts."
+  },
+  {
+    "term": "HTTP",
+    "definition": "An application-layer protocol with request methods, response statuses, headers, and representation semantics."
+  },
+  {
+    "term": "HTTPS",
+    "definition": "HTTP protected by TLS, providing transport confidentiality and integrity with authenticated server identity when correctly configured."
+  },
+  {
+    "term": "Idempotency",
+    "definition": "The property that repeating an identical request has the same intended server effect as making it once."
+  },
+  {
+    "term": "Idempotency key",
+    "definition": "A client-supplied identifier that an operation can use to detect and replay the same request intent under documented rules."
+  },
+  {
+    "term": "Input object",
+    "definition": "A GraphQL type used for structured operation inputs rather than returned object fields."
+  },
+  {
+    "term": "Interface",
+    "definition": "A GraphQL abstract type declaring fields that implementing object types must provide."
+  },
+  {
+    "term": "Introspection",
+    "definition": "GraphQL's schema-inspection capability, used by tools to discover types and descriptions when enabled."
+  },
+  {
+    "term": "JSON",
+    "definition": "A text data format with objects, arrays, strings, numbers, booleans, and null."
+  },
+  {
+    "term": "JSON Schema",
+    "definition": "A vocabulary and processing model for describing and validating JSON instances."
+  },
+  {
+    "term": "JWT",
+    "definition": "A compact claims representation that may be signed or encrypted; using a JWT does not by itself establish a safe authentication design."
+  },
+  {
+    "term": "Migration guide",
+    "definition": "Task-oriented instructions for adapting an integration to changed behavior or contracts."
+  },
+  {
+    "term": "Minor unit",
+    "definition": "An integer subdivision of a currency; this demo uses 100 INR minor units per rupee, not a universal currency rule."
+  },
+  {
+    "term": "Mutation",
+    "definition": "A GraphQL operation for changes, with serial execution of top-level mutation fields but no automatic transaction guarantee."
+  },
+  {
+    "term": "N+1 problem",
+    "definition": "A pattern where resolving a list causes an additional dependent lookup per item, potentially increasing work substantially."
+  },
+  {
+    "term": "Node",
+    "definition": "The business object within a connection edge, or a separately defined interface in some schema conventions."
+  },
+  {
+    "term": "Non-null",
+    "definition": "A GraphQL wrapper that disallows null at a position and affects error propagation when resolution fails."
+  },
+  {
+    "term": "Null propagation",
+    "definition": "The movement of an execution failure upward through non-null positions until a nullable boundary can hold null."
+  },
+  {
+    "term": "Nullable",
+    "definition": "Permitting null as a value; this is different from permitting a field to be absent."
+  },
+  {
+    "term": "OAuth 2.0",
+    "definition": "An authorization framework for obtaining limited access to resources; it is not by itself a user-authentication protocol."
+  },
+  {
+    "term": "Offset pagination",
+    "definition": "Selecting a collection portion by the number of matching items to skip and a limit."
+  },
+  {
+    "term": "oneOf",
+    "definition": "A JSON Schema condition requiring a value to match exactly one listed subschema."
+  },
+  {
+    "term": "OpenAPI",
+    "definition": "A standard language for describing HTTP APIs in a machine-readable document."
+  },
+  {
+    "term": "operationId",
+    "definition": "A unique identifier for an OpenAPI operation used by tooling and references."
+  },
+  {
+    "term": "OPTIONS",
+    "definition": "A method used to describe communication options for a target; browser preflight is one use."
+  },
+  {
+    "term": "pageInfo",
+    "definition": "Connection metadata such as hasNextPage and endCursor used to continue traversal."
+  },
+  {
+    "term": "Pagination",
+    "definition": "Dividing a collection into bounded portions with a documented way to continue."
+  },
+  {
+    "term": "Partial data",
+    "definition": "A GraphQL result containing usable data alongside execution errors for other response positions."
+  },
+  {
+    "term": "PATCH",
+    "definition": "An HTTP method for applying a partial modification according to the documented patch format and rules."
+  },
+  {
+    "term": "Path parameter",
+    "definition": "A variable embedded in a URL path, such as productId in /products/{productId}."
+  },
+  {
+    "term": "Persisted operation",
+    "definition": "A GraphQL document stored or registered for reuse by identifier under a defined server policy."
+  },
+  {
+    "term": "PKCE",
+    "definition": "An OAuth extension binding an authorization-code exchange to a client-generated verifier to mitigate code interception and related threats."
+  },
+  {
+    "term": "POST",
+    "definition": "An HTTP method requesting resource-specific processing; its effects depend on the operation contract."
+  },
+  {
+    "term": "Problem Details",
+    "definition": "The RFC 9457 JSON or XML format for machine-readable HTTP API problem information with defined members and extensions."
+  },
+  {
+    "term": "PUT",
+    "definition": "An HTTP method whose intent is to create or replace the target resource state with the supplied representation."
+  },
+  {
+    "term": "Query",
+    "definition": "A GraphQL operation intended to retrieve data through fields on the query root."
+  },
+  {
+    "term": "Query parameter",
+    "definition": "A named URL query value used for options such as filtering, sorting, or pagination."
+  },
+  {
+    "term": "Quickstart",
+    "definition": "A short, reproducible path to a first useful success with stated prerequisites and expected results."
+  },
+  {
+    "term": "Rate limit",
+    "definition": "A restriction on request or resource consumption over a defined scope and period."
+  },
+  {
+    "term": "Reference ($ref)",
+    "definition": "A pointer to another schema or description component, avoiding repeated independent definitions."
+  },
+  {
+    "term": "Replay attack",
+    "definition": "Reusing a previously valid message or credential exchange to cause an unintended repeated action."
+  },
+  {
+    "term": "Representation",
+    "definition": "A transmitted description of a resource, such as a JSON product object."
+  },
+  {
+    "term": "Request body",
+    "definition": "The payload sent with a request, whose format is described by its media type."
+  },
+  {
+    "term": "Request header",
+    "definition": "Metadata sent with a request, such as Content-Type or Authorization."
+  },
+  {
+    "term": "Required",
+    "definition": "A presence obligation at a specific location; it does not by itself determine whether null is accepted."
+  },
+  {
+    "term": "Resource",
+    "definition": "A concept identified and manipulated through an interface, such as a product or order."
+  },
+  {
+    "term": "Response header",
+    "definition": "Metadata returned with a response, such as ETag, Location, or Retry-After."
+  },
+  {
+    "term": "REST",
+    "definition": "An architectural style with constraints including a uniform interface and stateless interactions; not every JSON-over-HTTP API fully follows it."
+  },
+  {
+    "term": "Retry-After",
+    "definition": "A response header that can communicate how long a client should wait before a follow-up request."
+  },
+  {
+    "term": "Safe method",
+    "definition": "A method whose defined semantics are essentially read-only from the client's perspective."
+  },
+  {
+    "term": "Scalar",
+    "definition": "A leaf GraphQL type; built-ins and custom scalars have specific serialization and input-coercion behavior."
+  },
+  {
+    "term": "Schema",
+    "definition": "A machine-readable definition of permitted data structure and constraints."
+  },
+  {
+    "term": "Scope",
+    "definition": "A named permission or access range whose meaning is defined by the authorization system."
+  },
+  {
+    "term": "SDL",
+    "definition": "GraphQL Schema Definition Language, the textual notation for types, fields, arguments, and related schema elements."
+  },
+  {
+    "term": "Selection set",
+    "definition": "The fields requested at a GraphQL response position, including nested selections where required."
+  },
+  {
+    "term": "SME",
+    "definition": "Subject-matter expert who can explain and review a specific area of product behavior."
+  },
+  {
+    "term": "Snapshot",
+    "definition": "A captured representation at a particular time; ShopVerse orders preserve line names and prices at creation."
+  },
+  {
+    "term": "Source of truth",
+    "definition": "The authoritative source for a fact; disagreements among implementation, contract, and intended behavior must be resolved."
+  },
+  {
+    "term": "Status code",
+    "definition": "An HTTP response code indicating the result category and semantics of the request handling."
+  },
+  {
+    "term": "Subscription",
+    "definition": "A GraphQL operation model for results over time; a working service also needs a supported delivery transport."
+  },
+  {
+    "term": "Swagger UI",
+    "definition": "A tool that renders OpenAPI descriptions into an interactive reference; it is not the OpenAPI specification itself."
+  },
+  {
+    "term": "Timeout",
+    "definition": "A limit on waiting; it does not prove that a server-side write did not occur."
+  },
+  {
+    "term": "Tutorial",
+    "definition": "A learning-oriented sequence that builds understanding through a guided activity."
+  },
+  {
+    "term": "Union",
+    "definition": "A GraphQL abstract type representing one of several object types without declaring shared business fields itself."
+  },
+  {
+    "term": "URL",
+    "definition": "An address that identifies a resource location and may contain a scheme, host, path, query, and fragment."
+  },
+  {
+    "term": "Variable",
+    "definition": "A typed named input supplied separately from a GraphQL document, usually in JSON over HTTP."
+  },
+  {
+    "term": "Webhook",
+    "definition": "A server-initiated HTTP notification sent to a configured receiver when a documented event occurs."
+  },
+  {
+    "term": "YAML",
+    "definition": "A structured data serialization format often used for human-edited API descriptions."
+  }
+]

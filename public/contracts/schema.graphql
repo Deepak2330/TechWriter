@@ -1,0 +1,140 @@
+"""UTC timestamp using YYYY-MM-DDTHH:mm:ss.sssZ. The demo accepts only this canonical ISO representation."""
+scalar DateTime
+"""Whether the catalogue currently permits adding this product to a cart."""
+enum Availability { IN_STOCK OUT_OF_STOCK }
+"""Stable product sort, with ID as a tie-breaker."""
+enum ProductSort { NAME_ASC PRICE_ASC PRICE_DESC }
+enum CartStatus { ACTIVE CHECKED_OUT }
+enum OrderStatus { CONFIRMED CANCELLED DELIVERED }
+enum ShipmentStatus { DELIVERED }
+enum ReturnStatus { REQUESTED }
+"""Integer minor units. The demo supports INR only: 100 minor units equal one rupee."""
+type Money {
+  """Nonnegative minor units, bounded to the signed 32-bit GraphQL Int range."""
+  amountMinor: Int!
+  """Currency code; always INR in this implementation."""
+  currency: String!
+}
+input MoneyInput {
+  """Allowed unit-price range: 0 through 1,000,000 minor units."""
+  amountMinor: Int!
+  """Only INR is supported by the local demo."""
+  currency: String!
+}
+type Category { """Opaque category identifier.""" id: ID! """Category display name.""" name: String! }
+type Seller { """Opaque seller identifier.""" id: ID! """Seller display name.""" name: String! }
+type ProductVariant {
+  id: ID!
+  productId: ID!
+  """Variant SKU. Variants are read-only examples; checkout selects a product ID."""
+  sku: String!
+  name: String!
+}
+"""A catalogue product. Public read access; writes require the owning seller or an administrator."""
+type Product {
+  id: ID!
+  """Display name, 1-120 Unicode code points.""" name: String!
+  """Description, up to 2,000 characters; may be empty.""" description: String!
+  """Unique product SKU, 1-64 characters.""" sku: String!
+  price: Money!
+  """Original price before markdown. Null means no original markdown price is recorded. When set, it is at least price."""
+  priceBeforeMarkdown: Money
+  availability: Availability!
+  categoryId: ID!
+  sellerId: ID!
+  seller: Seller!
+  variants: [ProductVariant!]!
+  reviews: [Review!]!
+  createdAt: DateTime!
+}
+"""Customer profile. Only customer demo tokens can use me."""
+type Customer { id: ID! name: String! """Synthetic example.test address.""" email: String! }
+"""One current product and quantity in a cart."""
+type CartItem { id: ID! productId: ID! quantity: Int! product: Product! unitPrice: Money! }
+"""ACTIVE cart totals use current catalogue prices; CHECKED_OUT carts are read-only snapshots."""
+type Cart { id: ID! customerId: ID! status: CartStatus! items: [CartItem!]! total: Money! }
+"""Snapshot captured at order creation, independent of subsequent catalogue changes."""
+type OrderItem { id: ID! productId: ID! name: String! quantity: Int! unitPrice: Money! }
+type Address { line1: String! city: String! postalCode: String! country: String! }
+input AddressInput { line1: String! city: String! postalCode: String! """Only IN is supported.""" country: String! }
+type Shipment { id: ID! orderId: ID! status: ShipmentStatus! trackingCode: String! }
+type Order {
+  id: ID! customerId: ID! cartId: ID! status: OrderStatus!
+  items: [OrderItem!]! total: Money! shippingAddress: Address! createdAt: DateTime!
+  """Requires access to this order. New orders have no shipments."""
+  shipments: [Shipment!]!
+}
+type Review { id: ID! productId: ID! customerId: ID! """Integer from 1 through 5.""" rating: Int! comment: String! createdAt: DateTime! }
+type ReturnRequest { id: ID! orderId: ID! customerId: ID! reason: String! status: ReturnStatus! createdAt: DateTime! }
+"""Forward pagination metadata. Cursors are opaque and are not durable snapshots."""
+type PageInfo { hasNextPage: Boolean! endCursor: String }
+type ProductEdge { cursor: String! node: Product! }
+type ProductConnection { edges: [ProductEdge!]! pageInfo: PageInfo! totalCount: Int! }
+type OrderEdge { cursor: String! node: Order! }
+type OrderConnection { edges: [OrderEdge!]! pageInfo: PageInfo! totalCount: Int! }
+input ProductFilter { """Case-insensitive name substring, up to 120 characters.""" q: String categoryId: ID availability: Availability }
+input CreateProductInput {
+  name: String! description: String sku: String! price: MoneyInput!
+  priceBeforeMarkdown: MoneyInput availability: Availability! categoryId: ID!
+}
+"""Supply at least one field. Omitted fields remain unchanged. Null only clears priceBeforeMarkdown; other nulls fail business validation."""
+input UpdateProductInput {
+  name: String description: String sku: String price: MoneyInput
+  priceBeforeMarkdown: MoneyInput availability: Availability categoryId: ID
+}
+input AddCartItemInput { cartId: ID! productId: ID! """Integer from 1 through 99.""" quantity: Int! }
+input UpdateCartItemInput { cartId: ID! itemId: ID! """Replacement quantity, not an increment.""" quantity: Int! }
+input CreateOrderInput {
+  cartId: ID! shippingAddress: AddressInput!
+  """1-128 characters; scoped to the customer and retained until server restart or reset. Reuse only with identical order details."""
+  idempotencyKey: String!
+}
+input AddReviewInput { productId: ID! rating: Int! comment: String! }
+input CreateReturnInput { orderId: ID! """1-500 characters.""" reason: String! }
+type ProductPayload { product: Product! }
+type DeletePayload { deletedId: ID! }
+type CartPayload { cart: Cart! }
+type OrderPayload { order: Order! }
+type CreateOrderPayload { order: Order! """True when the saved original response is replayed.""" replayed: Boolean! }
+type ReviewPayload { review: Review! }
+type ReturnPayload { returnRequest: ReturnRequest! }
+type Query {
+  """Look up a public product. Unknown IDs produce a field error and null at product."""
+  product(id: ID!): Product
+  """Public forward-paginated catalogue. first is 1-100; default 20. Cursors cannot be reused with different filters or sorting."""
+  products(filter: ProductFilter, sort: ProductSort! = NAME_ASC, first: Int! = 20, after: String): ProductConnection!
+  """Retrieve all categories accepted by product inputs."""
+  categories: [Category!]!
+  """Retrieve your cart, or any cart with the administrator token."""
+  cart(id: ID!): Cart
+  """Retrieve your order, or any order with the administrator token."""
+  order(id: ID!): Order
+  """List the caller's orders; administrators see all. first is 1-100, default 20."""
+  orders(first: Int! = 20, after: String): OrderConnection
+  """Customer profile. An unauthenticated call produces an error at this nullable field."""
+  me: Customer
+}
+type Mutation {
+  """Seller/admin. Create a product with a unique SKU."""
+  createProduct(input: CreateProductInput!): ProductPayload
+  """Owning seller/admin. Only supplied fields change."""
+  updateProduct(id: ID!, input: UpdateProductInput!): ProductPayload
+  """Owning seller/admin. Active-cart references prevent deletion."""
+  deleteProduct(id: ID!): DeletePayload
+  """Customer. Create an empty ACTIVE cart."""
+  createCart: CartPayload
+  """Cart owner/admin. Add an available product not already in the cart."""
+  addCartItem(input: AddCartItemInput!): CartPayload
+  """Cart owner/admin. Replace the item's quantity."""
+  updateCartItem(input: UpdateCartItemInput!): CartPayload
+  """Cart owner/admin. Remove an existing item from an ACTIVE cart."""
+  removeCartItem(cartId: ID!, itemId: ID!): CartPayload
+  """Customer. Snapshot an order, close the cart, and retain the idempotent result."""
+  createOrder(input: CreateOrderInput!): CreateOrderPayload
+  """Order owner/admin. Cancel a CONFIRMED order; already-cancelled orders are returned unchanged."""
+  cancelOrder(id: ID!, reason: String): OrderPayload
+  """Customer. One review per customer/product; rating is 1-5."""
+  addReview(input: AddReviewInput!): ReviewPayload
+  """Order owner/admin. Request one whole-order return for a DELIVERED order."""
+  createReturn(input: CreateReturnInput!): ReturnPayload
+}

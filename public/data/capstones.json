@@ -1,0 +1,20 @@
+[
+  {
+    "id": "rest",
+    "title": "REST developer documentation",
+    "summary": "Create a complete product-and-order documentation set, from quickstart to recovery guidance.",
+    "path": "content/capstones/rest.md"
+  },
+  {
+    "id": "graphql",
+    "title": "GraphQL developer documentation",
+    "summary": "Document a schema, complete operations, pagination, partial errors, and a purchase workflow.",
+    "path": "content/capstones/graphql.md"
+  },
+  {
+    "id": "maintenance",
+    "title": "API change and migration review",
+    "summary": "Analyze a proposed release, update documentation, and identify decisions that must be resolved before publishing.",
+    "path": "content/capstones/maintenance.md"
+  }
+]

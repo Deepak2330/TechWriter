@@ -1,0 +1,19 @@
+{
+  "name": "api-documentation-academy",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An offline-first API technical writing course with a real ShopVerse REST and GraphQL learning server.",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "dev": "node server/index.js",
+    "start": "node server/index.js",
+    "build": "node scripts/build.js",
+    "check": "node scripts/check.js",
+    "test": "node --test tests/*.test.js",
+    "test:e2e": "node tests/browser.js"
+  },
+  "dependencies": {"graphql": "16.11.0", "graphql-http": "1.22.4"},
+  "devDependencies": {"playwright": "1.56.1"},
+  "license": "MIT"
+}

@@ -1,0 +1,860 @@
+{
+  "title": "API Documentation Academy",
+  "version": "1.0.0",
+  "modules": [
+    {
+      "id": "m01",
+      "title": "Foundations of API writing",
+      "summary": "Turn a developer task into documentation people can actually use.",
+      "number": "01",
+      "level": "Beginner"
+    },
+    {
+      "id": "m02",
+      "title": "HTTP, data, and tools",
+      "summary": "Read requests, inspect responses, and build confidence with API tools.",
+      "number": "02",
+      "level": "Beginner"
+    },
+    {
+      "id": "m03",
+      "title": "REST concepts and design",
+      "summary": "Understand resources, methods, collections, and failure behavior.",
+      "number": "03",
+      "level": "Beginner"
+    },
+    {
+      "id": "m04",
+      "title": "Writing REST documentation",
+      "summary": "Build complete references and practical purchase-flow tutorials.",
+      "number": "04",
+      "level": "Intermediate"
+    },
+    {
+      "id": "m05",
+      "title": "Security and reliability",
+      "summary": "Document access, retries, caching, and asynchronous integrations.",
+      "number": "05",
+      "level": "Intermediate"
+    },
+    {
+      "id": "m06",
+      "title": "OpenAPI foundations",
+      "summary": "Describe a real API with reusable, machine-readable contracts.",
+      "number": "06",
+      "level": "Intermediate"
+    },
+    {
+      "id": "m07",
+      "title": "Advanced OpenAPI and quality",
+      "summary": "Model difficult cases and keep specifications in sync with behavior.",
+      "number": "07",
+      "level": "Advanced"
+    },
+    {
+      "id": "m08",
+      "title": "GraphQL foundations",
+      "summary": "Read schemas and write queries, variables, and mutations.",
+      "number": "08",
+      "level": "Beginner"
+    },
+    {
+      "id": "m09",
+      "title": "Advanced GraphQL behavior",
+      "summary": "Explain nulls, errors, connections, transport, and operational tradeoffs.",
+      "number": "09",
+      "level": "Advanced"
+    },
+    {
+      "id": "m10",
+      "title": "Writing GraphQL documentation",
+      "summary": "Create field references and integration guides that go beyond SDL.",
+      "number": "10",
+      "level": "Intermediate"
+    },
+    {
+      "id": "m11",
+      "title": "Documentation operations",
+      "summary": "Review changes, test examples, and publish through docs-as-code.",
+      "number": "11",
+      "level": "Intermediate"
+    },
+    {
+      "id": "m12",
+      "title": "Portfolio and capstones",
+      "summary": "Apply your skills to three realistic documentation assignments.",
+      "number": "12",
+      "level": "Portfolio"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "l01",
+      "module": "m01",
+      "number": 1,
+      "title": "What API documentation is",
+      "summary": "Learn to explain an API as a useful product, not merely a list of URLs.",
+      "level": "Beginner",
+      "path": "content/lessons/l01.md",
+      "words": 906,
+      "minutes": 6,
+      "objectives": [
+        "Identify the reader and their task",
+        "Distinguish an API contract from a working integration",
+        "Define a useful documentation outcome"
+      ]
+    },
+    {
+      "id": "l02",
+      "module": "m01",
+      "number": 2,
+      "title": "Choose the right documentation type",
+      "summary": "Separate learning, task instructions, explanations, and lookup reference so readers can find the right level of help.",
+      "level": "Beginner",
+      "path": "content/lessons/l02.md",
+      "words": 848,
+      "minutes": 5,
+      "objectives": [
+        "Choose a format for a developer question",
+        "Plan a quickstart that produces an observable result",
+        "Connect tutorials and reference pages without duplicating them"
+      ]
+    },
+    {
+      "id": "l03",
+      "module": "m01",
+      "number": 3,
+      "title": "Writing style and information architecture",
+      "summary": "Write descriptions that explain behavior, constraints, and decisions instead of repeating a field name.",
+      "level": "Beginner",
+      "path": "content/lessons/l03.md",
+      "words": 912,
+      "minutes": 6,
+      "objectives": [
+        "Rewrite vague API prose",
+        "Use consistent names and task-based headings",
+        "Organize a page for scanning and accessibility"
+      ]
+    },
+    {
+      "id": "l04",
+      "module": "m01",
+      "number": 4,
+      "title": "Gather information and interview engineers",
+      "summary": "Build an evidence-based documentation plan from tickets, schemas, implementation, and reproducible tests.",
+      "level": "Beginner",
+      "path": "content/lessons/l04.md",
+      "words": 825,
+      "minutes": 5,
+      "objectives": [
+        "Create a documentation evidence map",
+        "Ask targeted SME questions",
+        "Separate confirmed behavior from assumptions"
+      ]
+    },
+    {
+      "id": "l05",
+      "module": "m02",
+      "number": 5,
+      "title": "HTTP requests, URLs, and responses",
+      "summary": "Learn to read the request and response envelope before interpreting the business data.",
+      "level": "Beginner",
+      "path": "content/lessons/l05.md",
+      "words": 815,
+      "minutes": 5,
+      "objectives": [
+        "Identify the parts of an HTTP request",
+        "Distinguish path parameters from query parameters",
+        "Explain content negotiation and HTTPS"
+      ]
+    },
+    {
+      "id": "l06",
+      "module": "m02",
+      "number": 6,
+      "title": "JSON, YAML, and schema fundamentals",
+      "summary": "Distinguish valid syntax from a valid API request, and learn to describe nested data accurately.",
+      "level": "Beginner",
+      "path": "content/lessons/l06.md",
+      "words": 808,
+      "minutes": 5,
+      "objectives": [
+        "Read nested objects and arrays",
+        "Explain missing, null, empty, and default values",
+        "Use schemas to describe structure and constraints"
+      ]
+    },
+    {
+      "id": "l07",
+      "module": "m02",
+      "number": 7,
+      "title": "Test APIs with cURL, Postman, and browser tools",
+      "summary": "Capture reproducible evidence and learn what each tool can and cannot establish.",
+      "level": "Beginner",
+      "path": "content/lessons/l07.md",
+      "words": 794,
+      "minutes": 5,
+      "objectives": [
+        "Run and inspect a REST request",
+        "Use environment variables without exposing secrets",
+        "Record success and failure evidence for documentation"
+      ]
+    },
+    {
+      "id": "l08",
+      "module": "m02",
+      "number": 8,
+      "title": "JavaScript fetch for technical writers",
+      "summary": "Write examples that handle network problems, HTTP errors, and empty bodies without hiding what happened.",
+      "level": "Beginner",
+      "path": "content/lessons/l08.md",
+      "words": 703,
+      "minutes": 5,
+      "objectives": [
+        "Read async JavaScript request code",
+        "Handle HTTP failures separately from rejected promises",
+        "Explain timeouts and browser CORS behavior"
+      ]
+    },
+    {
+      "id": "l09",
+      "module": "m03",
+      "number": 9,
+      "title": "Resources and REST principles",
+      "summary": "Understand the design ideas behind an HTTP API without assuming that every JSON endpoint is fully RESTful.",
+      "level": "Beginner",
+      "path": "content/lessons/l09.md",
+      "words": 776,
+      "minutes": 5,
+      "objectives": [
+        "Model resources and representations",
+        "Explain stateless requests",
+        "Distinguish REST constraints from common URL conventions"
+      ]
+    },
+    {
+      "id": "l10",
+      "module": "m03",
+      "number": 10,
+      "title": "Methods, safety, and idempotency",
+      "summary": "Explain GET, POST, PUT, PATCH, DELETE, HEAD, and OPTIONS without reducing them to misleading CRUD labels.",
+      "level": "Beginner",
+      "path": "content/lessons/l10.md",
+      "words": 804,
+      "minutes": 5,
+      "objectives": [
+        "Distinguish safe from idempotent methods",
+        "Explain replacement versus partial update",
+        "Document repeat-request behavior accurately"
+      ]
+    },
+    {
+      "id": "l11",
+      "module": "m03",
+      "number": 11,
+      "title": "Parameters, filtering, sorting, and pagination",
+      "summary": "Make collection documentation precise enough to support reliable iteration, not just the first page.",
+      "level": "Beginner",
+      "path": "content/lessons/l11.md",
+      "words": 837,
+      "minutes": 5,
+      "objectives": [
+        "Document parameter location and serialization",
+        "Compare offset and cursor pagination",
+        "Explain sort order, limits, and changing datasets"
+      ]
+    },
+    {
+      "id": "l12",
+      "module": "m03",
+      "number": 12,
+      "title": "Status codes and Problem Details",
+      "summary": "Write error documentation that explains what happened and what the developer should do next.",
+      "level": "Beginner",
+      "path": "content/lessons/l12.md",
+      "words": 798,
+      "minutes": 5,
+      "objectives": [
+        "Interpret success and error statuses in context",
+        "Read an RFC 9457-style error representation",
+        "Distinguish retryable conditions from input and state problems"
+      ]
+    },
+    {
+      "id": "l13",
+      "module": "m04",
+      "number": 13,
+      "title": "Anatomy of a complete endpoint reference",
+      "summary": "Build a reference page that answers the questions a developer asks immediately before and after a request.",
+      "level": "Intermediate",
+      "path": "content/lessons/l13.md",
+      "words": 828,
+      "minutes": 5,
+      "objectives": [
+        "Create a predictable endpoint-page structure",
+        "Document fields and side effects together",
+        "Provide complete success and failure examples"
+      ]
+    },
+    {
+      "id": "l14",
+      "module": "m04",
+      "number": 14,
+      "title": "Product API documentation workshop",
+      "summary": "Apply the reference structure to reads, creation, replacement, partial update, and deletion.",
+      "level": "Intermediate",
+      "path": "content/lessons/l14.md",
+      "words": 789,
+      "minutes": 5,
+      "objectives": [
+        "Compare six product operations",
+        "Write accurate money and markdown descriptions",
+        "Explain ownership and write constraints"
+      ]
+    },
+    {
+      "id": "l15",
+      "module": "m04",
+      "number": 15,
+      "title": "Write a cart-to-order integration guide",
+      "summary": "Document a multi-step purchase workflow, including transferred IDs, state changes, and recovery.",
+      "level": "Intermediate",
+      "path": "content/lessons/l15.md",
+      "words": 838,
+      "minutes": 5,
+      "objectives": [
+        "Create a sequence with explicit prerequisites",
+        "Explain order snapshotting and cart closure",
+        "Handle uncertain order-creation outcomes"
+      ]
+    },
+    {
+      "id": "l16",
+      "module": "m04",
+      "number": 16,
+      "title": "Troubleshooting and trustworthy code samples",
+      "summary": "Build diagnostic guidance that narrows a problem instead of asking readers to try random fixes.",
+      "level": "Intermediate",
+      "path": "content/lessons/l16.md",
+      "words": 867,
+      "minutes": 6,
+      "objectives": [
+        "Write symptom-cause-check-fix guidance",
+        "Audit sample code for hidden assumptions",
+        "Separate API defects from expected validation failures"
+      ]
+    },
+    {
+      "id": "l17",
+      "module": "m05",
+      "number": 17,
+      "title": "Authentication, authorization, and OAuth",
+      "summary": "Explain how callers obtain access and what they are permitted to do without confusing tokens, identities, and scopes.",
+      "level": "Intermediate",
+      "path": "content/lessons/l17.md",
+      "words": 870,
+      "minutes": 6,
+      "objectives": [
+        "Distinguish authentication from authorization",
+        "Explain common OAuth use cases",
+        "Document the demo tokens without presenting them as production security"
+      ]
+    },
+    {
+      "id": "l18",
+      "module": "m05",
+      "number": 18,
+      "title": "Rate limits, retries, and idempotency keys",
+      "summary": "Give developers a recovery policy that avoids unnecessary traffic and accidental duplicate work.",
+      "level": "Intermediate",
+      "path": "content/lessons/l18.md",
+      "words": 792,
+      "minutes": 5,
+      "objectives": [
+        "Explain uncertain outcomes and retry conditions",
+        "Document idempotency scope and retention",
+        "Distinguish a rate-limit simulation from real quota enforcement"
+      ]
+    },
+    {
+      "id": "l19",
+      "module": "m05",
+      "number": 19,
+      "title": "Caching, API evolution, and deprecation",
+      "summary": "Document representation freshness and change management without promising compatibility that the API cannot guarantee.",
+      "level": "Intermediate",
+      "path": "content/lessons/l19.md",
+      "words": 818,
+      "minutes": 5,
+      "objectives": [
+        "Explain ETags and conditional requests",
+        "Separate API versions from specification versions",
+        "Assess additive and breaking changes"
+      ]
+    },
+    {
+      "id": "l20",
+      "module": "m05",
+      "number": 20,
+      "title": "Webhooks, asynchronous work, and uploads",
+      "summary": "Document event-driven integrations and long-running tasks while keeping unimplemented examples clearly labelled.",
+      "level": "Intermediate",
+      "path": "content/lessons/l20.md",
+      "words": 784,
+      "minutes": 5,
+      "objectives": [
+        "Describe webhook delivery and verification",
+        "Explain polling for asynchronous operations",
+        "Document multipart upload requirements"
+      ]
+    },
+    {
+      "id": "l21",
+      "module": "m06",
+      "number": 21,
+      "title": "OpenAPI, Swagger, and version numbers",
+      "summary": "Learn what an OpenAPI description does and choose a supported baseline without confusing it with the API itself.",
+      "level": "Intermediate",
+      "path": "content/lessons/l21.md",
+      "words": 792,
+      "minutes": 5,
+      "objectives": [
+        "Distinguish the specification from tooling",
+        "Read the top-level OpenAPI structure",
+        "Explain three independent version numbers"
+      ]
+    },
+    {
+      "id": "l22",
+      "module": "m06",
+      "number": 22,
+      "title": "Document OpenAPI operations",
+      "summary": "Describe methods, inputs, responses, and headers with correct requiredness and clear operation identities.",
+      "level": "Intermediate",
+      "path": "content/lessons/l22.md",
+      "words": 739,
+      "minutes": 5,
+      "objectives": [
+        "Build a Path Item and Operation Object",
+        "Separate request-body presence from property presence",
+        "Describe response bodies and relevant headers"
+      ]
+    },
+    {
+      "id": "l23",
+      "module": "m06",
+      "number": 23,
+      "title": "Reusable models, constraints, and examples",
+      "summary": "Build a coherent schema library without losing the differences between input and output representations.",
+      "level": "Intermediate",
+      "path": "content/lessons/l23.md",
+      "words": 758,
+      "minutes": 5,
+      "objectives": [
+        "Use components and references correctly",
+        "Model nested objects and constrained values",
+        "Separate reusable structure from operation-specific behavior"
+      ]
+    },
+    {
+      "id": "l24",
+      "module": "m06",
+      "number": 24,
+      "title": "Security schemes and complete API descriptions",
+      "summary": "Describe public and protected operations accurately, including alternatives, combined requirements, and the limits of contract declarations.",
+      "level": "Intermediate",
+      "path": "content/lessons/l24.md",
+      "words": 772,
+      "minutes": 5,
+      "objectives": [
+        "Define bearer and illustrative OAuth schemes",
+        "Apply security globally or per operation",
+        "Understand OR and AND semantics in security requirements"
+      ]
+    },
+    {
+      "id": "l25",
+      "module": "m07",
+      "number": 25,
+      "title": "Advanced schemas: composition and nullability",
+      "summary": "Model alternative shapes and shared constraints without assuming that schema composition behaves like object-oriented inheritance.",
+      "level": "Advanced",
+      "path": "content/lessons/l25.md",
+      "words": 739,
+      "minutes": 5,
+      "objectives": [
+        "Compare oneOf, anyOf, and allOf",
+        "Express nullable values in OpenAPI 3.1",
+        "Identify common closed-object composition traps"
+      ]
+    },
+    {
+      "id": "l26",
+      "module": "m07",
+      "number": 26,
+      "title": "Links, callbacks, webhooks, and multipart descriptions",
+      "summary": "Describe advanced HTTP relationships without falsely advertising features that the server does not implement.",
+      "level": "Advanced",
+      "path": "content/lessons/l26.md",
+      "words": 768,
+      "minutes": 5,
+      "objectives": [
+        "Distinguish links, callbacks, and webhooks",
+        "Represent multipart request bodies",
+        "Keep illustrative contracts separate from the live API"
+      ]
+    },
+    {
+      "id": "l27",
+      "module": "m07",
+      "number": 27,
+      "title": "Authoring, bundling, and publishing an OpenAPI description",
+      "summary": "Choose a source-of-truth workflow that prevents generated files and hand-written guidance from drifting apart.",
+      "level": "Advanced",
+      "path": "content/lessons/l27.md",
+      "words": 817,
+      "minutes": 5,
+      "objectives": [
+        "Compare design-first and code-first workflows",
+        "Explain references and bundling",
+        "Plan a reproducible publication pipeline"
+      ]
+    },
+    {
+      "id": "l28",
+      "module": "m07",
+      "number": 28,
+      "title": "Validate contracts and prevent documentation drift",
+      "summary": "Design checks that distinguish syntactic correctness, schema correctness, runtime agreement, and editorial quality.",
+      "level": "Advanced",
+      "path": "content/lessons/l28.md",
+      "words": 796,
+      "minutes": 5,
+      "objectives": [
+        "Build a layered validation strategy",
+        "Test examples against schemas",
+        "Report validation coverage honestly"
+      ]
+    },
+    {
+      "id": "l29",
+      "module": "m08",
+      "number": 29,
+      "title": "GraphQL and REST: choose by the problem",
+      "summary": "Understand the two interface styles using the same marketplace task rather than treating them as competing slogans.",
+      "level": "Beginner",
+      "path": "content/lessons/l29.md",
+      "words": 771,
+      "minutes": 5,
+      "objectives": [
+        "Explain the GraphQL execution model at a high level",
+        "Compare request and response shapes",
+        "Discuss tradeoffs without unsupported performance claims"
+      ]
+    },
+    {
+      "id": "l30",
+      "module": "m08",
+      "number": 30,
+      "title": "Read GraphQL SDL and nullability",
+      "summary": "Translate type signatures into precise documentation about objects, inputs, lists, and values.",
+      "level": "Beginner",
+      "path": "content/lessons/l30.md",
+      "words": 751,
+      "minutes": 5,
+      "objectives": [
+        "Read object, input, scalar, and enum definitions",
+        "Interpret list and non-null wrappers",
+        "Distinguish input presence from output selection"
+      ]
+    },
+    {
+      "id": "l31",
+      "module": "m08",
+      "number": 31,
+      "title": "Queries, variables, aliases, and fragments",
+      "summary": "Write reusable GraphQL operations and explain how their selections determine the response shape.",
+      "level": "Beginner",
+      "path": "content/lessons/l31.md",
+      "words": 665,
+      "minutes": 4,
+      "objectives": [
+        "Build a named query with variables",
+        "Use aliases and fragments correctly",
+        "Predict nested response keys"
+      ]
+    },
+    {
+      "id": "l32",
+      "module": "m08",
+      "number": 32,
+      "title": "Mutations, inputs, payloads, and side effects",
+      "summary": "Document GraphQL writes as business operations with explicit validation, state changes, and result handling.",
+      "level": "Beginner",
+      "path": "content/lessons/l32.md",
+      "words": 765,
+      "minutes": 5,
+      "objectives": [
+        "Read a mutation input and payload",
+        "Explain serial root-field execution without implying transactions",
+        "Document business failures in the implemented error model"
+      ]
+    },
+    {
+      "id": "l33",
+      "module": "m09",
+      "number": 33,
+      "title": "Validation, coercion, nullability, and errors",
+      "summary": "Learn to explain failures without hiding successful fields or confusing missing values with null.",
+      "level": "Advanced",
+      "path": "content/lessons/l33.md",
+      "words": 843,
+      "minutes": 5,
+      "objectives": [
+        "Distinguish request failures from execution failures",
+        "Explain null propagation using the schema",
+        "Document partial responses and stable error codes"
+      ]
+    },
+    {
+      "id": "l34",
+      "module": "m09",
+      "number": 34,
+      "title": "GraphQL pagination and collection contracts",
+      "summary": "Document forward pagination without treating a popular connection pattern as part of every GraphQL API.",
+      "level": "Advanced",
+      "path": "content/lessons/l34.md",
+      "words": 800,
+      "minutes": 5,
+      "objectives": [
+        "Read edges, nodes, cursors, and pageInfo",
+        "Write a correct next-page workflow",
+        "Explain limits and cursor stability"
+      ]
+    },
+    {
+      "id": "l35",
+      "module": "m09",
+      "number": 35,
+      "title": "Interfaces, unions, directives, and introspection",
+      "summary": "Learn the schema features writers encounter while keeping illustrative extensions separate from the live marketplace.",
+      "level": "Advanced",
+      "path": "content/lessons/l35.md",
+      "words": 765,
+      "minutes": 5,
+      "objectives": [
+        "Explain interfaces and unions",
+        "Use __typename and inline fragments",
+        "Describe directives, introspection, and deprecation"
+      ]
+    },
+    {
+      "id": "l36",
+      "module": "m09",
+      "number": 36,
+      "title": "GraphQL transport and operational concerns",
+      "summary": "Separate the GraphQL language from HTTP behavior, runtime limits, subscriptions, and platform-specific architecture.",
+      "level": "Advanced",
+      "path": "content/lessons/l36.md",
+      "words": 883,
+      "minutes": 6,
+      "objectives": [
+        "Describe a complete GraphQL HTTP request",
+        "Explain operational risks without universal claims",
+        "Identify extension features that the demo does not implement"
+      ]
+    },
+    {
+      "id": "l37",
+      "module": "m10",
+      "number": 37,
+      "title": "Document a GraphQL schema beyond its field names",
+      "summary": "Turn SDL into a useful business reference with constraints, relationships, and precise value semantics.",
+      "level": "Intermediate",
+      "path": "content/lessons/l37.md",
+      "words": 860,
+      "minutes": 6,
+      "objectives": [
+        "Write descriptions that add information",
+        "Build complete field and argument tables",
+        "Document scalar and relationship behavior"
+      ]
+    },
+    {
+      "id": "l38",
+      "module": "m10",
+      "number": 38,
+      "title": "GraphQL query reference workshop",
+      "summary": "Write operation pages that a developer can execute and adapt without reconstructing missing context.",
+      "level": "Intermediate",
+      "path": "content/lessons/l38.md",
+      "words": 723,
+      "minutes": 5,
+      "objectives": [
+        "Build a complete query reference",
+        "Provide matching variables and response selections",
+        "Cover missing data and permissions"
+      ]
+    },
+    {
+      "id": "l39",
+      "module": "m10",
+      "number": 39,
+      "title": "GraphQL mutation reference workshop",
+      "summary": "Document writes as state transitions with validation, permissions, and recovery guidance.",
+      "level": "Intermediate",
+      "path": "content/lessons/l39.md",
+      "words": 772,
+      "minutes": 5,
+      "objectives": [
+        "Describe mutation preconditions and side effects",
+        "Write complete input and payload examples",
+        "Explain safe recovery from uncertain outcomes"
+      ]
+    },
+    {
+      "id": "l40",
+      "module": "m10",
+      "number": 40,
+      "title": "Write a GraphQL purchase-flow guide",
+      "summary": "Connect individual operations into a reproducible integration without hiding state or promising unrealistic transaction behavior.",
+      "level": "Intermediate",
+      "path": "content/lessons/l40.md",
+      "words": 925,
+      "minutes": 6,
+      "objectives": [
+        "Plan a multi-step GraphQL tutorial",
+        "Carry identifiers and retry keys across steps",
+        "Compare REST and GraphQL fairly"
+      ]
+    },
+    {
+      "id": "l41",
+      "module": "m11",
+      "number": 41,
+      "title": "Docs-as-code: Markdown, Git, and review",
+      "summary": "Treat documentation changes as reviewable, versioned product work rather than untracked files.",
+      "level": "Intermediate",
+      "path": "content/lessons/l41.md",
+      "words": 851,
+      "minutes": 6,
+      "objectives": [
+        "Use a simple documentation branch workflow",
+        "Separate source content from generated output",
+        "Write a useful documentation pull request"
+      ]
+    },
+    {
+      "id": "l42",
+      "module": "m11",
+      "number": 42,
+      "title": "Test documentation at several layers",
+      "summary": "Build a quality plan that catches broken examples, misleading contracts, and unusable pages.",
+      "level": "Intermediate",
+      "path": "content/lessons/l42.md",
+      "words": 930,
+      "minutes": 6,
+      "objectives": [
+        "Distinguish content, contract, runtime, and browser checks",
+        "Design representative positive and negative tests",
+        "Report results honestly"
+      ]
+    },
+    {
+      "id": "l43",
+      "module": "m11",
+      "number": 43,
+      "title": "Release notes, deprecation, and migration guides",
+      "summary": "Explain API changes in terms of consumer impact, required action, and verified compatibility.",
+      "level": "Intermediate",
+      "path": "content/lessons/l43.md",
+      "words": 900,
+      "minutes": 6,
+      "objectives": [
+        "Classify additive and breaking changes carefully",
+        "Write actionable release notes",
+        "Create before-and-after migration guidance"
+      ]
+    },
+    {
+      "id": "l44",
+      "module": "m11",
+      "number": 44,
+      "title": "Work with engineering teams and release owners",
+      "summary": "Build a documentation workflow with clear questions, ownership, and release-readiness evidence.",
+      "level": "Intermediate",
+      "path": "content/lessons/l44.md",
+      "words": 973,
+      "minutes": 6,
+      "objectives": [
+        "Run focused SME reviews",
+        "Define documentation acceptance criteria",
+        "Use metrics without confusing activity with quality"
+      ]
+    },
+    {
+      "id": "l45",
+      "module": "m12",
+      "number": 45,
+      "title": "Capstone: build a REST documentation package",
+      "summary": "Use the course tools to produce a complete, testable developer documentation set.",
+      "level": "Portfolio",
+      "path": "content/lessons/l45.md",
+      "words": 857,
+      "minutes": 6,
+      "objectives": [
+        "Plan a coherent REST documentation deliverable",
+        "Validate references against the implementation",
+        "Assess the result with a weighted rubric"
+      ]
+    },
+    {
+      "id": "l46",
+      "module": "m12",
+      "number": 46,
+      "title": "Capstone: build a GraphQL documentation package",
+      "summary": "Create a field-aware developer guide that explains both schema structure and real integration behavior.",
+      "level": "Portfolio",
+      "path": "content/lessons/l46.md",
+      "words": 851,
+      "minutes": 6,
+      "objectives": [
+        "Combine schema and operation references",
+        "Document a working GraphQL workflow",
+        "Assess nullability, errors, and pagination explanations"
+      ]
+    },
+    {
+      "id": "l47",
+      "module": "m12",
+      "number": 47,
+      "title": "Capstone: maintain documentation through an API change",
+      "summary": "Practice impact analysis across contracts, examples, release notes, and migration guidance.",
+      "level": "Portfolio",
+      "path": "content/lessons/l47.md",
+      "words": 921,
+      "minutes": 6,
+      "objectives": [
+        "Analyze a realistic multi-part change request",
+        "Update all affected documentation artifacts",
+        "Separate confirmed decisions from draft assumptions"
+      ]
+    },
+    {
+      "id": "l48",
+      "module": "m12",
+      "number": 48,
+      "title": "Assemble and review your API-writing portfolio",
+      "summary": "Present your work as an honest, coherent demonstration of technical writing skills.",
+      "level": "Portfolio",
+      "path": "content/lessons/l48.md",
+      "words": 990,
+      "minutes": 6,
+      "objectives": [
+        "Package a portfolio around reader outcomes",
+        "Explain evidence and limitations",
+        "Plan useful next improvements"
+      ]
+    }
+  ]
+}

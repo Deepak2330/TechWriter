@@ -1,0 +1,7 @@
+
+> api-documentation-academy@1.0.0 check
+> node scripts/check.js
+
+1119 structural/content checks; 165 request/response examples validated with the project's supported-keyword validator.
+SKIPPED: dependencies not installed; no GraphQL validation/execution claim.
+PASS: content, internal links, JavaScript syntax, OpenAPI structure/references/examples.

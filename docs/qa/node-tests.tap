@@ -1,0 +1,357 @@
+
+> api-documentation-academy@1.0.0 test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: seed data, public reads, minor units, and clone isolation
+ok 1 - seed data, public reads, minor units, and clone isolation
+  ---
+  duration_ms: 1.986711
+  type: 'test'
+  ...
+# Subtest: bearer scheme is required and case-insensitive
+ok 2 - bearer scheme is required and case-insensitive
+  ---
+  duration_ms: 0.674297
+  type: 'test'
+  ...
+# Subtest: product list sorting, filtering, limits, and invalid filters even on empty result
+ok 3 - product list sorting, filtering, limits, and invalid filters even on empty result
+  ---
+  duration_ms: 13.360858
+  type: 'test'
+  ...
+# Subtest: seller ownership, unique SKU, name bounds, and unknown fields
+ok 4 - seller ownership, unique SKU, name bounds, and unknown fields
+  ---
+  duration_ms: 1.059605
+  type: 'test'
+  ...
+# Subtest: partial updates preserve omission and only original price accepts null
+ok 5 - partial updates preserve omission and only original price accepts null
+  ---
+  duration_ms: 1.922802
+  type: 'test'
+  ...
+# Subtest: PUT requires full writable fields and resets omitted optional fields
+ok 6 - PUT requires full writable fields and resets omitted optional fields
+  ---
+  duration_ms: 0.68132
+  type: 'test'
+  ...
+# Subtest: money constraints and original-price relation
+ok 7 - money constraints and original-price relation
+  ---
+  duration_ms: 0.510593
+  type: 'test'
+  ...
+# Subtest: cart access, quantity boundaries, duplicates, and removal
+ok 8 - cart access, quantity boundaries, duplicates, and removal
+  ---
+  duration_ms: 1.029093
+  type: 'test'
+  ...
+# Subtest: availability and active-cart deletion dependencies
+ok 9 - availability and active-cart deletion dependencies
+  ---
+  duration_ms: 1.7881
+  type: 'test'
+  ...
+# Subtest: order creation, identical replay, changed details, and closure
+ok 10 - order creation, identical replay, changed details, and closure
+  ---
+  duration_ms: 2.05437
+  type: 'test'
+  ...
+# Subtest: empty carts, customer-only creation, and required key
+ok 11 - empty carts, customer-only creation, and required key
+  ---
+  duration_ms: 0.512461
+  type: 'test'
+  ...
+# Subtest: order and checked-out cart snapshots survive product edits and deletion
+ok 12 - order and checked-out cart snapshots survive product edits and deletion
+  ---
+  duration_ms: 1.151628
+  type: 'test'
+  ...
+# Subtest: idempotency replay remains the original result after cancellation
+ok 13 - idempotency replay remains the original result after cancellation
+  ---
+  duration_ms: 0.691421
+  type: 'test'
+  ...
+# Subtest: cancellation repeat and delivered return policy
+ok 14 - cancellation repeat and delivered return policy
+  ---
+  duration_ms: 0.836103
+  type: 'test'
+  ...
+# Subtest: review validation, uniqueness, and customer-only role
+ok 15 - review validation, uniqueness, and customer-only role
+  ---
+  duration_ms: 0.815121
+  type: 'test'
+  ...
+# Subtest: order listing is ownership scoped and rejects unknown parameters
+ok 16 - order listing is ownership scoped and rejects unknown parameters
+  ---
+  duration_ms: 0.262634
+  type: 'test'
+  ...
+# Subtest: reset removes created state and restores seeds
+ok 17 - reset removes created state and restores seeds
+  ---
+  duration_ms: 0.461528
+  type: 'test'
+  ...
+# Subtest: ETags are stable for identical representations and change with values
+ok 18 - ETags are stable for identical representations and change with values
+  ---
+  duration_ms: 1.03587
+  type: 'test'
+  ...
+# Subtest: GraphQL seed product matches documented selection exactly
+ok 19 - GraphQL seed product matches documented selection exactly # SKIP Install dependencies with npm install to run real GraphQL tests.
+  ---
+  duration_ms: 2.559197
+  type: 'test'
+  ...
+# Subtest: GraphQL validation and variable coercion failures
+ok 20 - GraphQL validation and variable coercion failures # SKIP Install dependencies with npm install to run real GraphQL tests.
+  ---
+  duration_ms: 0.371507
+  type: 'test'
+  ...
+# Subtest: GraphQL partial data and wrong-owner errors
+ok 21 - GraphQL partial data and wrong-owner errors # SKIP Install dependencies with npm install to run real GraphQL tests.
+  ---
+  duration_ms: 0.126263
+  type: 'test'
+  ...
+# Subtest: GraphQL cursor traversal and scope protection
+ok 22 - GraphQL cursor traversal and scope protection # SKIP Install dependencies with npm install to run real GraphQL tests.
+  ---
+  duration_ms: 0.121338
+  type: 'test'
+  ...
+# Subtest: GraphQL purchase workflow and idempotent replay
+ok 23 - GraphQL purchase workflow and idempotent replay # SKIP Install dependencies with npm install to run real GraphQL tests.
+  ---
+  duration_ms: 0.597633
+  type: 'test'
+  ...
+# Subtest: GraphQL conditional selection differs from null
+ok 24 - GraphQL conditional selection differs from null # SKIP Install dependencies with npm install to run real GraphQL tests.
+  ---
+  duration_ms: 0.133807
+  type: 'test'
+  ...
+# Subtest: GraphQL DateTime rejects invalid and noncanonical values
+ok 25 - GraphQL DateTime rejects invalid and noncanonical values # SKIP Install dependencies with npm install to run real GraphQL tests.
+  ---
+  duration_ms: 0.500872
+  type: 'test'
+  ...
+# Subtest: GraphQL real HTTP adapter, multiple operations, and invalid method
+ok 26 - GraphQL real HTTP adapter, multiple operations, and invalid method # SKIP Install dependencies with npm install to run real GraphQL tests.
+  ---
+  duration_ms: 0.372444
+  type: 'test'
+  ...
+# Subtest: all 24 advertised REST operations return contract-valid success responses
+    # Subtest: GET /products
+    ok 1 - GET /products
+      ---
+      duration_ms: 35.370238
+      type: 'test'
+      ...
+    # Subtest: GET /products/{productId}
+    ok 2 - GET /products/{productId}
+      ---
+      duration_ms: 8.816748
+      type: 'test'
+      ...
+    # Subtest: POST /products
+    ok 3 - POST /products
+      ---
+      duration_ms: 15.525551
+      type: 'test'
+      ...
+    # Subtest: PUT /products/{productId}
+    ok 4 - PUT /products/{productId}
+      ---
+      duration_ms: 4.183837
+      type: 'test'
+      ...
+    # Subtest: PATCH /products/{productId}
+    ok 5 - PATCH /products/{productId}
+      ---
+      duration_ms: 5.247528
+      type: 'test'
+      ...
+    # Subtest: DELETE /products/{productId}
+    ok 6 - DELETE /products/{productId}
+      ---
+      duration_ms: 4.462593
+      type: 'test'
+      ...
+    # Subtest: GET /products/{productId}/variants
+    ok 7 - GET /products/{productId}/variants
+      ---
+      duration_ms: 3.382314
+      type: 'test'
+      ...
+    # Subtest: GET /categories
+    ok 8 - GET /categories
+      ---
+      duration_ms: 3.261337
+      type: 'test'
+      ...
+    # Subtest: GET /products/{productId}/reviews
+    ok 9 - GET /products/{productId}/reviews
+      ---
+      duration_ms: 8.224648
+      type: 'test'
+      ...
+    # Subtest: POST /products/{productId}/reviews
+    ok 10 - POST /products/{productId}/reviews
+      ---
+      duration_ms: 5.972801
+      type: 'test'
+      ...
+    # Subtest: GET /me
+    ok 11 - GET /me
+      ---
+      duration_ms: 2.852117
+      type: 'test'
+      ...
+    # Subtest: PATCH /me
+    ok 12 - PATCH /me
+      ---
+      duration_ms: 2.636326
+      type: 'test'
+      ...
+    # Subtest: POST /carts
+    ok 13 - POST /carts
+      ---
+      duration_ms: 2.081735
+      type: 'test'
+      ...
+    # Subtest: GET /carts/{cartId}
+    ok 14 - GET /carts/{cartId}
+      ---
+      duration_ms: 2.154393
+      type: 'test'
+      ...
+    # Subtest: POST /carts/{cartId}/items
+    ok 15 - POST /carts/{cartId}/items
+      ---
+      duration_ms: 3.866225
+      type: 'test'
+      ...
+    # Subtest: PATCH /carts/{cartId}/items/{itemId}
+    ok 16 - PATCH /carts/{cartId}/items/{itemId}
+      ---
+      duration_ms: 4.231206
+      type: 'test'
+      ...
+    # Subtest: DELETE /carts/{cartId}/items/{itemId}
+    ok 17 - DELETE /carts/{cartId}/items/{itemId}
+      ---
+      duration_ms: 2.842602
+      type: 'test'
+      ...
+    # Subtest: POST /orders
+    ok 18 - POST /orders
+      ---
+      duration_ms: 4.426902
+      type: 'test'
+      ...
+    # Subtest: GET /orders
+    ok 19 - GET /orders
+      ---
+      duration_ms: 3.258793
+      type: 'test'
+      ...
+    # Subtest: GET /orders/{orderId}
+    ok 20 - GET /orders/{orderId}
+      ---
+      duration_ms: 3.023097
+      type: 'test'
+      ...
+    # Subtest: POST /orders/{orderId}/cancellations
+    ok 21 - POST /orders/{orderId}/cancellations
+      ---
+      duration_ms: 6.346414
+      type: 'test'
+      ...
+    # Subtest: GET /orders/{orderId}/shipments
+    ok 22 - GET /orders/{orderId}/shipments
+      ---
+      duration_ms: 2.155133
+      type: 'test'
+      ...
+    # Subtest: POST /orders/{orderId}/returns
+    ok 23 - POST /orders/{orderId}/returns
+      ---
+      duration_ms: 2.624384
+      type: 'test'
+      ...
+    # Subtest: GET /returns/{returnId}
+    ok 24 - GET /returns/{returnId}
+      ---
+      duration_ms: 1.995225
+      type: 'test'
+      ...
+    1..24
+ok 27 - all 24 advertised REST operations return contract-valid success responses
+  ---
+  duration_ms: 173.404783
+  type: 'test'
+  ...
+# Subtest: ETag, conditional GET, HEAD, and 405 Allow behavior
+ok 28 - ETag, conditional GET, HEAD, and 405 Allow behavior
+  ---
+  duration_ms: 17.429409
+  type: 'test'
+  ...
+# Subtest: REST authentication and ownership errors have valid Problem Details
+ok 29 - REST authentication and ownership errors have valid Problem Details
+  ---
+  duration_ms: 7.415717
+  type: 'test'
+  ...
+# Subtest: invalid JSON, media type, missing body, unknown query, and deterministic rate limit
+ok 30 - invalid JSON, media type, missing body, unknown query, and deterministic rate limit
+  ---
+  duration_ms: 14.831661
+  type: 'test'
+  ...
+# Subtest: order creation HTTP replay uses 201/200 and retains one order
+ok 31 - order creation HTTP replay uses 201/200 and retains one order
+  ---
+  duration_ms: 11.282503
+  type: 'test'
+  ...
+# Subtest: static assets load, reset is protected, and cross-origin access is rejected
+ok 32 - static assets load, reset is protected, and cross-origin access is rejected
+  ---
+  duration_ms: 37.325114
+  type: 'test'
+  ...
+# Subtest: GraphQL availability is reported without fake execution
+ok 33 - GraphQL availability is reported without fake execution
+  ---
+  duration_ms: 6.095623
+  type: 'test'
+  ...
+1..33
+# tests 57
+# suites 0
+# pass 49
+# fail 0
+# cancelled 0
+# skipped 8
+# todo 0
+# duration_ms 419.764882

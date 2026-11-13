@@ -1,0 +1,12 @@
+{
+  "input": {
+    "cartId": "cart_1001",
+    "shippingAddress": {
+      "line1": "10 Example Road",
+      "city": "Bengaluru",
+      "postalCode": "560001",
+      "country": "IN"
+    },
+    "idempotencyKey": "graphql-order-001"
+  }
+}

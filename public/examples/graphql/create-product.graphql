@@ -1,0 +1,5 @@
+mutation CreateProduct($input: CreateProductInput!) {
+  createProduct(input: $input) {
+    product { id name sku price { amountMinor currency } availability categoryId sellerId }
+  }
+}

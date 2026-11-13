@@ -1,0 +1,4 @@
+query Compare($first: ID!, $second: ID!) {
+  first: product(id: $first) { id name price { amountMinor currency } }
+  second: product(id: $second) { id name price { amountMinor currency } }
+}

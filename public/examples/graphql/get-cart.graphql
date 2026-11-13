@@ -1,0 +1,7 @@
+query ReadCart($id: ID!) {
+  cart(id: $id) {
+    id status customerId
+    items { id productId quantity unitPrice { amountMinor currency } product { name } }
+    total { amountMinor currency }
+  }
+}

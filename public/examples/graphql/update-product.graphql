@@ -1,0 +1,5 @@
+mutation UpdateProduct($id: ID!, $input: UpdateProductInput!) {
+  updateProduct(id: $id, input: $input) {
+    product { id name priceBeforeMarkdown { amountMinor currency } }
+  }
+}

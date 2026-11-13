@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A practical API technical writing course: REST, OpenAPI, GraphQL, working examples, writing labs, and portfolio projects.">
+  <meta name="color-scheme" content="light dark">
+  <title>API Documentation Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/course-data.js"></script>
+  <script defer src="vendor/prism.js"></script>
+  <script defer src="js/core.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <aside id="sidebar" class="sidebar" aria-label="Course navigation"></aside>
+  <div class="shell">
+    <header class="topbar">
+      <button id="menu-button" class="icon-button mobile-only" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+      <div class="topbar-title">THE API WRITER'S WORKSPACE</div>
+      <button id="search-button" class="search-button" aria-label="Search course"><span>Search lessons, APIs, and terms</span><kbd>Ctrl K</kbd></button>
+      <span id="server-status" class="connection-status">Reading mode</span>
+      <button id="theme-button" class="icon-button" aria-label="Switch to dark theme">&#9680;</button>
+    </header>
+    <main id="main" tabindex="-1"></main>
+    <footer class="footer">ShopVerse is a fictional educational marketplace. These examples are not official Amazon or Flipkart APIs.<br>Original course material &middot; Local demo only &middot; No real credentials or transactions</footer>
+  </div>
+  <dialog id="search-dialog" aria-labelledby="search-heading">
+    <div class="dialog-top"><h2 id="search-heading">Find your next answer</h2><button id="close-search" class="icon-button" aria-label="Close search">&#10005;</button></div>
+    <label class="sr-only" for="search-input">Search all course content</label>
+    <input id="search-input" type="search" autocomplete="off" placeholder="Try: nullable, idempotency, product...">
+    <p id="search-count" class="muted" aria-live="polite">Search lessons, references, and the glossary.</p>
+    <div id="search-results"></div>
+  </dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <noscript><p>This learning website requires JavaScript. All lessons are also available as Markdown files in content/lessons.</p></noscript>
+</body>
+</html>

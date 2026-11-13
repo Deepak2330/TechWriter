@@ -1,0 +1,5 @@
+mutation AddItem($input: AddCartItemInput!) {
+  addCartItem(input: $input) {
+    cart { id status items { id productId quantity } total { amountMinor currency } }
+  }
+}

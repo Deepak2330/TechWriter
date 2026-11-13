@@ -1,0 +1,8 @@
+query ReadOrder($id: ID!) {
+  order(id: $id) {
+    id status createdAt
+    items { productId name quantity unitPrice { amountMinor currency } }
+    total { amountMinor currency }
+    shipments { id status trackingCode }
+  }
+}

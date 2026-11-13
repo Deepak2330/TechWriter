@@ -1,0 +1,6 @@
+{
+  "yamlJsonEquivalent": true,
+  "schemaDefinitionsValid": 30,
+  "examplesValid": 165,
+  "validator": "Python jsonschema Draft202012Validator with FormatChecker; not a complete OpenAPI conformance validator"
+}

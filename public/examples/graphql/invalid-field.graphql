@@ -1,0 +1,1 @@
+query InvalidField { product(id: "prod_1001") { id colour } }

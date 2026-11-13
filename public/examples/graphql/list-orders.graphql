@@ -1,0 +1,7 @@
+query MyOrders($first: Int!, $after: String) {
+  orders(first: $first, after: $after) {
+    edges { cursor node { id status total { amountMinor currency } } }
+    pageInfo { hasNextPage endCursor }
+    totalCount
+  }
+}

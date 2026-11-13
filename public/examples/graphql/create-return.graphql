@@ -1,0 +1,3 @@
+mutation ReturnOrder($input: CreateReturnInput!) {
+  createReturn(input: $input) { returnRequest { id orderId reason status createdAt } }
+}

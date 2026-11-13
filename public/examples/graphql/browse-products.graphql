@@ -1,0 +1,7 @@
+query BrowseProducts($first: Int!, $after: String) {
+  products(first: $first, after: $after, sort: PRICE_ASC) {
+    edges { cursor node { id name price { amountMinor currency } } }
+    pageInfo { hasNextPage endCursor }
+    totalCount
+  }
+}

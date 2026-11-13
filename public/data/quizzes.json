@@ -1,0 +1,782 @@
+[
+  {
+    "id": "q01",
+    "module": "m01",
+    "question": "What is the strongest outcome for an API quickstart?",
+    "options": [
+      "A reader completes one useful request and understands its result",
+      "Every schema field is listed",
+      "The page contains many diagrams",
+      "The reader memorizes all HTTP codes"
+    ],
+    "answer": 0,
+    "explanation": "A quickstart should deliver a concrete first success, with prerequisites and an observable result."
+  },
+  {
+    "id": "q02",
+    "module": "m01",
+    "question": "Which source disagreement needs investigation?",
+    "options": [
+      "Two pages use different heading lengths",
+      "The schema allows 100 items but the server rejects values above 99",
+      "A code block uses indentation",
+      "A tutorial links to a reference"
+    ],
+    "answer": 1,
+    "explanation": "A contract/implementation mismatch can break integrations and needs an owner and reproducible evidence."
+  },
+  {
+    "id": "q03",
+    "module": "m01",
+    "question": "Which page best explains how to place an order?",
+    "options": [
+      "An alphabetical glossary only",
+      "A raw list of schema types",
+      "A task-based integration guide",
+      "An internal commit history"
+    ],
+    "answer": 2,
+    "explanation": "An integration guide connects operations, prerequisites, identifiers, and recovery around a task."
+  },
+  {
+    "id": "q04",
+    "module": "m01",
+    "question": "Which field description adds useful information?",
+    "options": [
+      "The quantity of quantity",
+      "A number",
+      "The input value",
+      "quantity is an integer from 1 through 99; updating it replaces the current quantity"
+    ],
+    "answer": 3,
+    "explanation": "A useful description adds constraints and semantics that the name alone does not reveal."
+  },
+  {
+    "id": "q05",
+    "module": "m01",
+    "question": "Which statement is appropriate for this portfolio?",
+    "options": [
+      "ShopVerse is a fictional educational marketplace",
+      "These are official Amazon private endpoints",
+      "The project proves employment at Flipkart",
+      "The server is a production payment system"
+    ],
+    "answer": 0,
+    "explanation": "The project demonstrates documentation skills without implying a real-company affiliation or unsupported capabilities."
+  },
+  {
+    "id": "q06",
+    "module": "m02",
+    "question": "What does the request Content-Type header describe?",
+    "options": [
+      "The preferred response format only",
+      "The representation format of the request body",
+      "The authentication role",
+      "The URL hostname"
+    ],
+    "answer": 1,
+    "explanation": "Content-Type identifies the body representation; Accept expresses desired response media types."
+  },
+  {
+    "id": "q07",
+    "module": "m02",
+    "question": "Which is valid JSON?",
+    "options": [
+      "{quantity: 1}",
+      "{'quantity': 1}",
+      "{\"quantity\": 1}",
+      "{\"quantity\": 1,}"
+    ],
+    "answer": 2,
+    "explanation": "JSON requires double-quoted property names and strings and does not allow trailing commas."
+  },
+  {
+    "id": "q08",
+    "module": "m02",
+    "question": "What does fetch do for a normal HTTP 404 response?",
+    "options": [
+      "It always rejects as a network error",
+      "It returns null",
+      "It retries automatically",
+      "It resolves to a Response whose status must be inspected"
+    ],
+    "answer": 3,
+    "explanation": "Fetch rejects for network-level failures, but HTTP error responses normally resolve. Check response.ok or status."
+  },
+  {
+    "id": "q09",
+    "module": "m02",
+    "question": "Which response must not be blindly parsed as JSON?",
+    "options": [
+      "A 204 No Content response",
+      "Every 200 response with JSON Content-Type",
+      "A valid GraphQL JSON response",
+      "A documented JSON error body"
+    ],
+    "answer": 0,
+    "explanation": "A 204 response has no content. Unconditional response.json() can fail even when the operation succeeded."
+  },
+  {
+    "id": "q10",
+    "module": "m02",
+    "question": "Where do variables belong in a GraphQL HTTP JSON request?",
+    "options": [
+      "Inside a browser cookie by default",
+      "In the variables object beside query",
+      "Only in the URL path",
+      "As unquoted JSON identifiers"
+    ],
+    "answer": 1,
+    "explanation": "The GraphQL-over-HTTP request envelope uses query and variables, with operationName when needed."
+  },
+  {
+    "id": "q11",
+    "module": "m03",
+    "question": "What is the key difference between PUT and PATCH here?",
+    "options": [
+      "PUT is read-only",
+      "PATCH always deletes the resource",
+      "PUT replaces the writable representation; PATCH changes supplied fields",
+      "Both always increment every numeric field"
+    ],
+    "answer": 2,
+    "explanation": "ShopVerse PUT requires the full writable set; PATCH preserves omitted fields. Both need explicit semantics."
+  },
+  {
+    "id": "q12",
+    "module": "m03",
+    "question": "Which method is intended to be safe?",
+    "options": [
+      "POST",
+      "PATCH",
+      "DELETE",
+      "GET"
+    ],
+    "answer": 3,
+    "explanation": "Safe HTTP methods are intended for read semantics. Incidental logging does not turn GET into a business write."
+  },
+  {
+    "id": "q13",
+    "module": "m03",
+    "question": "Does idempotent mean identical response status on every repetition?",
+    "options": [
+      "No; intended server effect is what matters",
+      "Yes, the entire response must be byte-identical",
+      "Yes, including timestamps",
+      "Only for GraphQL"
+    ],
+    "answer": 0,
+    "explanation": "Repeated idempotent requests can produce different responses while having the same intended effect."
+  },
+  {
+    "id": "q14",
+    "module": "m03",
+    "question": "What does an offset of 20 mean in ShopVerse product listing?",
+    "options": [
+      "Return exactly 20 pages",
+      "Skip the first 20 matching items",
+      "Use page number 20",
+      "Limit the response to 20 bytes"
+    ],
+    "answer": 1,
+    "explanation": "Offset is a count of matching items skipped; limit controls the number requested."
+  },
+  {
+    "id": "q15",
+    "module": "m03",
+    "question": "What is code in the Problem Details response?",
+    "options": [
+      "A mandatory standard RFC 9457 member",
+      "An HTTP method",
+      "A ShopVerse machine-readable extension",
+      "The response Content-Type"
+    ],
+    "answer": 2,
+    "explanation": "RFC 9457 defines standard members such as type and status; this project adds code and fields."
+  },
+  {
+    "id": "q16",
+    "module": "m04",
+    "question": "Which detail belongs before a private endpoint example?",
+    "options": [
+      "An unrelated company history",
+      "A hidden answer key",
+      "A claim that every token is equivalent",
+      "Required role and ownership rules"
+    ],
+    "answer": 3,
+    "explanation": "Readers need to know how to authorize the request and whose resource may be accessed."
+  },
+  {
+    "id": "q17",
+    "module": "m04",
+    "question": "What happens when addCartItem repeats the same product?",
+    "options": [
+      "It returns a duplicate-item conflict",
+      "It silently doubles the quantity",
+      "It deletes the old item",
+      "It always succeeds without change"
+    ],
+    "answer": 0,
+    "explanation": "Use updateCartItem to replace quantity. The add operation does not merge duplicate products."
+  },
+  {
+    "id": "q18",
+    "module": "m04",
+    "question": "How should a tutorial use a newly created cart ID?",
+    "options": [
+      "Assume it is always cart_1002",
+      "Read it from the response and pass it to the next step",
+      "Replace it with the product ID",
+      "Ignore it"
+    ],
+    "answer": 1,
+    "explanation": "Generated IDs depend on prior actions; a reproducible workflow carries actual outputs forward."
+  },
+  {
+    "id": "q19",
+    "module": "m04",
+    "question": "What does a confirmed order mean in this demo?",
+    "options": [
+      "A real card was charged",
+      "A courier was booked",
+      "An in-memory order was recorded and the cart closed",
+      "Tax was remitted"
+    ],
+    "answer": 2,
+    "explanation": "Payments, tax calculation, and fulfillment automation are outside the local demo."
+  },
+  {
+    "id": "q20",
+    "module": "m04",
+    "question": "Which error guidance is most useful?",
+    "options": [
+      "Repeat the word error",
+      "Tell the reader to retry every failure forever",
+      "Hide the response status",
+      "Explain the cause, affected field, and corrective action"
+    ],
+    "answer": 3,
+    "explanation": "Troubleshooting should help a consumer decide whether to fix input, change access, wait, or stop."
+  },
+  {
+    "id": "q21",
+    "module": "m05",
+    "question": "Authentication and authorization are respectively about what?",
+    "options": [
+      "Identity and permitted actions",
+      "Encryption and compression",
+      "Pagination and sorting",
+      "Currency and price"
+    ],
+    "answer": 0,
+    "explanation": "Authentication establishes an actor; authorization determines whether that actor can perform a particular action."
+  },
+  {
+    "id": "q22",
+    "module": "m05",
+    "question": "After an uncertain order timeout, what should be preserved?",
+    "options": [
+      "A new key on every retry",
+      "The original idempotency key and identical request details",
+      "Only the product name",
+      "No state at all"
+    ],
+    "answer": 1,
+    "explanation": "Reusing the original key lets the server replay the retained result rather than treating a retry as a new intent."
+  },
+  {
+    "id": "q23",
+    "module": "m05",
+    "question": "What does a 304 response to conditional GET mean?",
+    "options": [
+      "The product was deleted",
+      "The server returns a full new JSON body",
+      "The stored representation can be reused according to the cache contract",
+      "Authentication always failed"
+    ],
+    "answer": 2,
+    "explanation": "A matching validator can produce 304 without a representation body; the client uses its cached representation."
+  },
+  {
+    "id": "q24",
+    "module": "m05",
+    "question": "What is true of the demo bearer tokens?",
+    "options": [
+      "They are real Amazon credentials",
+      "They are encrypted payment cards",
+      "They prove JWT support",
+      "They are fixed synthetic local identities, not a production OAuth system"
+    ],
+    "answer": 3,
+    "explanation": "The authentication examples are deliberately local and must not be confused with a real identity provider."
+  },
+  {
+    "id": "q25",
+    "module": "m05",
+    "question": "Which webhook claim needs an explicit contract?",
+    "options": [
+      "Whether retries, ordering, and duplicates can occur",
+      "That every event is exactly once by definition",
+      "That signature checks are unnecessary",
+      "That all URLs are safe destinations"
+    ],
+    "answer": 0,
+    "explanation": "Webhook delivery guarantees and security depend on the implementation and must be documented."
+  },
+  {
+    "id": "q26",
+    "module": "m06",
+    "question": "What does the OpenAPI openapi field identify?",
+    "options": [
+      "The product API deployment timestamp",
+      "The OpenAPI specification version used by the document",
+      "The Node version",
+      "The number of endpoints"
+    ],
+    "answer": 1,
+    "explanation": "The specification version differs from info.version and from the API version in a URL."
+  },
+  {
+    "id": "q27",
+    "module": "m06",
+    "question": "Where does OpenAPI describe a JSON POST payload?",
+    "options": [
+      "Only in the path parameter list",
+      "Inside the servers URL",
+      "requestBody with an appropriate media type and schema",
+      "In operationId"
+    ],
+    "answer": 2,
+    "explanation": "requestBody describes request representations; parameters cover path, query, header, and cookie values."
+  },
+  {
+    "id": "q28",
+    "module": "m06",
+    "question": "How does an object schema require name?",
+    "options": [
+      "Set the example to a nonempty string only",
+      "Add name to the title",
+      "Use a response status of 201",
+      "Include name in the object-level required array"
+    ],
+    "answer": 3,
+    "explanation": "Presence requirements belong in required; constraints such as minLength address the value itself."
+  },
+  {
+    "id": "q29",
+    "module": "m06",
+    "question": "Which security declaration makes an operation public despite global security?",
+    "options": [
+      "security: []",
+      "A missing description",
+      "A tag named public",
+      "A nullable request body"
+    ],
+    "answer": 0,
+    "explanation": "An empty operation-level security requirement list overrides global requirements for that operation."
+  },
+  {
+    "id": "q30",
+    "module": "m06",
+    "question": "What is the purpose of operationId?",
+    "options": [
+      "Authorize a customer",
+      "Provide a unique machine-friendly operation identifier",
+      "Set an HTTP response status",
+      "Replace the URL"
+    ],
+    "answer": 1,
+    "explanation": "Unique operation IDs support tooling and linking but do not enforce runtime behavior."
+  },
+  {
+    "id": "q31",
+    "module": "m07",
+    "question": "What does oneOf require?",
+    "options": [
+      "The instance matches every schema",
+      "The instance matches no schemas",
+      "The instance matches exactly one listed schema",
+      "Every property becomes optional"
+    ],
+    "answer": 2,
+    "explanation": "oneOf is exclusive. Overlapping alternatives can make an otherwise plausible value fail validation."
+  },
+  {
+    "id": "q32",
+    "module": "m07",
+    "question": "What distinguishes optional from nullable?",
+    "options": [
+      "They always mean the same thing",
+      "Nullable means empty string",
+      "Optional means zero",
+      "Optional permits absence; nullable permits a null value"
+    ],
+    "answer": 3,
+    "explanation": "Presence and accepted value types are independent dimensions and need separate documentation."
+  },
+  {
+    "id": "q33",
+    "module": "m07",
+    "question": "Why validate examples against schemas?",
+    "options": [
+      "Examples can contradict constraints even when the document parses",
+      "Examples are always validated by a browser automatically",
+      "Schemas cannot describe objects",
+      "YAML syntax guarantees business accuracy"
+    ],
+    "answer": 0,
+    "explanation": "Parsing is only the first layer; schema validation can catch incorrect types, required fields, and limits."
+  },
+  {
+    "id": "q34",
+    "module": "m07",
+    "question": "What does a generated API renderer not automatically provide?",
+    "options": [
+      "A way to show operation descriptions",
+      "Complete workflow and recovery guidance",
+      "A view of parameter schemas",
+      "A list of paths"
+    ],
+    "answer": 1,
+    "explanation": "Rendered contracts are valuable references but cannot invent missing conceptual or task-based explanations."
+  },
+  {
+    "id": "q35",
+    "module": "m07",
+    "question": "How should an unsupported advanced OpenAPI example be presented?",
+    "options": [
+      "As a working operation in the main API",
+      "As a hidden endpoint",
+      "As a separate clearly labelled instructional contract",
+      "As an official third-party API"
+    ],
+    "answer": 2,
+    "explanation": "Separating illustrative extensions keeps the executable contract honest and avoids false capability claims."
+  },
+  {
+    "id": "q36",
+    "module": "m08",
+    "question": "Which type permits an empty list but no null list or items?",
+    "options": [
+      "[Product]",
+      "Product!",
+      "String",
+      "[Product!]!"
+    ],
+    "answer": 3,
+    "explanation": "A non-null list can still be empty. The inner exclamation mark disallows null items."
+  },
+  {
+    "id": "q37",
+    "module": "m08",
+    "question": "What determines the returned GraphQL business fields?",
+    "options": [
+      "The selection set",
+      "Every field in the schema automatically",
+      "The order of JSON variables",
+      "The endpoint path alone"
+    ],
+    "answer": 0,
+    "explanation": "GraphQL returns selected fields, subject to directives and execution results."
+  },
+  {
+    "id": "q38",
+    "module": "m08",
+    "question": "What is an alias used for?",
+    "options": [
+      "Renaming the server schema permanently",
+      "Changing a response key for a selected field",
+      "Granting permission",
+      "Changing HTTP status"
+    ],
+    "answer": 1,
+    "explanation": "Aliases let one document select the same field in different ways under distinct response names."
+  },
+  {
+    "id": "q39",
+    "module": "m08",
+    "question": "What does a mutation selection set control?",
+    "options": [
+      "Whether any side effect occurs at all",
+      "The customer role",
+      "Which result fields are returned, not the underlying side effects",
+      "The input constraints"
+    ],
+    "answer": 2,
+    "explanation": "The resolver and input determine the change; the selection set chooses the returned representation."
+  },
+  {
+    "id": "q40",
+    "module": "m08",
+    "question": "Which value is a valid GraphQL enum literal in a document?",
+    "options": [
+      "\"IN_STOCK\" for an enum argument literal",
+      "in stock",
+      "null for a non-null enum",
+      "IN_STOCK"
+    ],
+    "answer": 3,
+    "explanation": "Enum literals in a GraphQL document are unquoted names; variables encode enum values as JSON strings."
+  },
+  {
+    "id": "q41",
+    "module": "m09",
+    "question": "Can data and errors appear together?",
+    "options": [
+      "Yes, when execution yields partial usable data",
+      "No, GraphQL forbids it",
+      "Only when REST is used",
+      "Only with an invalid JSON body"
+    ],
+    "answer": 0,
+    "explanation": "Nullable field failures can coexist with successful fields in the same execution result."
+  },
+  {
+    "id": "q42",
+    "module": "m09",
+    "question": "What should a client do with an opaque cursor?",
+    "options": [
+      "Increment its decoded number",
+      "Return it unchanged for the same collection traversal",
+      "Reuse it after changing filters in all APIs",
+      "Treat it as a product ID"
+    ],
+    "answer": 1,
+    "explanation": "Cursor interpretation belongs to the server. Scope and stability rules are part of this API contract."
+  },
+  {
+    "id": "q43",
+    "module": "m09",
+    "question": "What does __typename reveal?",
+    "options": [
+      "A user password",
+      "The HTTP protocol version",
+      "The concrete GraphQL object type at that response position",
+      "The schema release date"
+    ],
+    "answer": 2,
+    "explanation": "It is useful for unions, interfaces, and client handling of runtime object types."
+  },
+  {
+    "id": "q44",
+    "module": "m09",
+    "question": "Are connection types mandated by the GraphQL core specification?",
+    "options": [
+      "Yes, every list must have edges",
+      "Yes, including scalar lists",
+      "Only for REST endpoints",
+      "No; they are a pagination convention"
+    ],
+    "answer": 3,
+    "explanation": "GraphQL does not mandate a particular pagination design."
+  },
+  {
+    "id": "q45",
+    "module": "m09",
+    "question": "Does GraphQL always return HTTP 200?",
+    "options": [
+      "No; transport and request failures can use other statuses",
+      "Yes, without exception",
+      "Only mutations always do",
+      "Only queries always do"
+    ],
+    "answer": 0,
+    "explanation": "Document the chosen transport implementation and inspect both HTTP metadata and the GraphQL envelope."
+  },
+  {
+    "id": "q46",
+    "module": "m10",
+    "question": "What should a priceBeforeMarkdown description explain?",
+    "options": [
+      "Only repeat the field name",
+      "Null meaning, money units, and its relationship to current price",
+      "A real marketplace affiliation",
+      "An unverified discount guarantee"
+    ],
+    "answer": 1,
+    "explanation": "Business semantics and constraints are what transform a schema label into useful documentation."
+  },
+  {
+    "id": "q47",
+    "module": "m10",
+    "question": "What must match in a query reference?",
+    "options": [
+      "Only heading font sizes",
+      "Only operation and product names",
+      "The query, variables, selected response fields, and access requirements",
+      "Only HTTP status and word count"
+    ],
+    "answer": 2,
+    "explanation": "A runnable reference is a consistent package of contract, input, access, and observed output."
+  },
+  {
+    "id": "q48",
+    "module": "m10",
+    "question": "What does updateProduct omission mean here?",
+    "options": [
+      "Clear every omitted field",
+      "Set every omitted number to zero",
+      "Delete the product",
+      "Keep the existing field value"
+    ],
+    "answer": 3,
+    "explanation": "PATCH-like update semantics preserve omitted fields; explicit null has separate business rules."
+  },
+  {
+    "id": "q49",
+    "module": "m10",
+    "question": "Can one root mutation automatically use another root field result as its input?",
+    "options": [
+      "No; the client normally carries the returned value into a later request",
+      "Yes, every mutation pipes results automatically",
+      "Only without variables",
+      "Only when both fields have the same name"
+    ],
+    "answer": 0,
+    "explanation": "Serial execution is not a general result-piping or transaction mechanism."
+  },
+  {
+    "id": "q50",
+    "module": "m10",
+    "question": "Which claim fairly compares the two included APIs?",
+    "options": [
+      "GraphQL is always faster",
+      "They share business rules but expose different request and response models",
+      "REST cannot use authentication",
+      "GraphQL needs no error documentation"
+    ],
+    "answer": 1,
+    "explanation": "A useful comparison considers tasks and tradeoffs instead of universal superiority claims."
+  },
+  {
+    "id": "q51",
+    "module": "m11",
+    "question": "Where should a lesson correction be made?",
+    "options": [
+      "Only in the generated bundle",
+      "Only in a screenshot",
+      "In its Markdown source, then rebuild",
+      "In localStorage"
+    ],
+    "answer": 2,
+    "explanation": "Generated files derive from source; direct edits are overwritten and create drift."
+  },
+  {
+    "id": "q52",
+    "module": "m11",
+    "question": "What does passing JSON parsing prove?",
+    "options": [
+      "Every endpoint works",
+      "The OpenAPI contract is complete",
+      "The writing is clear",
+      "The text has valid JSON syntax"
+    ],
+    "answer": 3,
+    "explanation": "Syntax, structural validity, runtime behavior, and usability require different checks."
+  },
+  {
+    "id": "q53",
+    "module": "m11",
+    "question": "Can adding an output enum value affect clients?",
+    "options": [
+      "Yes, exhaustive handlers may need updates",
+      "No, additions can never break anything",
+      "Only if the endpoint disappears",
+      "Only if the field becomes optional"
+    ],
+    "answer": 0,
+    "explanation": "Compatibility analysis must consider consumers, including exhaustive generated or handwritten code."
+  },
+  {
+    "id": "q54",
+    "module": "m11",
+    "question": "Which review request is most actionable?",
+    "options": [
+      "Please check everything whenever",
+      "Confirm whether a reused key with a changed address returns conflict",
+      "The document feels technical",
+      "Approve without reading examples"
+    ],
+    "answer": 1,
+    "explanation": "Specific questions tied to observable behavior produce clearer and more reliable SME review."
+  },
+  {
+    "id": "q55",
+    "module": "m11",
+    "question": "How should blocked tests be reported?",
+    "options": [
+      "Count them as passing",
+      "Delete them from the report",
+      "Identify the skipped tests, reason, and how to run them",
+      "Claim full verification anyway"
+    ],
+    "answer": 2,
+    "explanation": "Transparent test evidence is more valuable than an unsupported all-passed statement."
+  },
+  {
+    "id": "q56",
+    "module": "m12",
+    "question": "What makes a REST capstone coherent?",
+    "options": [
+      "Only a landing page",
+      "Only a list of HTTP methods",
+      "Only screenshots of a real company website",
+      "An overview, references, and a tested task workflow that agree"
+    ],
+    "answer": 3,
+    "explanation": "A portfolio should support a complete reader task through consistent artifacts."
+  },
+  {
+    "id": "q57",
+    "module": "m12",
+    "question": "What belongs in a GraphQL capstone beyond SDL?",
+    "options": [
+      "Operations, variables, permissions, errors, and workflow guidance",
+      "Only an OpenAPI path for /graphql",
+      "Only a logo",
+      "Only a list of type names"
+    ],
+    "answer": 0,
+    "explanation": "SDL is essential but does not replace transport or task-level documentation."
+  },
+  {
+    "id": "q58",
+    "module": "m12",
+    "question": "What should happen to unconfirmed release dates?",
+    "options": [
+      "Invent plausible dates",
+      "Keep them explicitly unresolved in the draft",
+      "Omit all migration discussion",
+      "Claim the change is already live"
+    ],
+    "answer": 1,
+    "explanation": "Release timing is a product fact that must be supplied or verified, not guessed."
+  },
+  {
+    "id": "q59",
+    "module": "m12",
+    "question": "What should a portfolio say about production readiness?",
+    "options": [
+      "Claim production readiness from attractive UI alone",
+      "Claim payment processing because orders exist",
+      "State the local demo limitations and actual test evidence",
+      "Claim every advanced topic is implemented"
+    ],
+    "answer": 2,
+    "explanation": "Honest scope distinguishes a useful educational project from an unsupported commercial product claim."
+  },
+  {
+    "id": "q60",
+    "module": "m12",
+    "question": "Which next improvement is most valuable after publishing?",
+    "options": [
+      "Add more decorative animation regardless of feedback",
+      "Remove all error examples",
+      "Hide the installation steps",
+      "Observe a new reader completing the quickstart and fix the blockers"
+    ],
+    "answer": 3,
+    "explanation": "User-task evidence helps prioritize improvements that actually improve documentation usability."
+  }
+]
